@@ -11,7 +11,7 @@
             underscore:"underscore",
             zoom:"zoom",
             boneAnimate:"boneAnimate.js?v=1.12",
-            pageSlider:"page-slider.js?v=1"
+            pageSlider:"page-slider.js?v=1.12"
         },
         shim: {
 

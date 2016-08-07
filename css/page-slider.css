@@ -83,27 +83,3 @@
 
 }
 .hide{display: none}
-.leftL{
-    position: absolute;
-    left: 0;
-    height: 60px;
-    top:39%;
-    width: 15px;
-    border:solid 1px gray;
-    z-index: 99;
-    background: rgba(146, 146, 146, 0.56);
-    word-break: break-all;
-
-}
-.rigthL{
-    position: absolute;
-    right: 0;
-    height: 60px;
-    top:39%;
-    width: 15px;
-    border:solid 1px gray;
-    z-index: 99;
-    background: rgba(146, 146, 146, 0.56);
-    word-break: break-all;
-
-}
