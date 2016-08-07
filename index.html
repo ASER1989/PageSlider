@@ -7,6 +7,12 @@
     <title></title>
     <link rel="stylesheet" href="./css/index.css"/>
 </head>
+<style>
+    #warp{
+        width:100%;
+        overflow: hidden;
+    }
+</style>
 <body>
 <div id="warp">
 
@@ -18,6 +24,8 @@
     var QR;
     function pageReady() {
         require(['zepto', 'zoom', "page-slider.min"], function ($, zoom, ps) {
+            var pageh = $(window).height();
+            $("#warp").height(pageh+"px");
             ps.ready({
                 el: "#warp",
                 url: "./page_1.html"
