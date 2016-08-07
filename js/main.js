@@ -9,7 +9,9 @@
             jquery:"jquery",
             zepto:"zepto",
             underscore:"underscore",
-            zoom:"zoom"
+            zoom:"zoom",
+            boneAnimate:"boneAnimate.js?v=1.12",
+            pageSlider:"page-slider.js?v=1"
         },
         shim: {
 

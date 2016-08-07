@@ -35,10 +35,11 @@
         if( isReady &&!isLock){
             isLock =true;
 
-            $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
             $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
 
-            index=nidx
+
+            index=nidx;
 
         }
 
@@ -48,8 +49,8 @@
         var nidx = index>=1?index-1:pages.length-1;
         if( isReady && !isLock){
             isLock = true;
-            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             index=nidx;
         }
     }

@@ -9,13 +9,13 @@
             width:100%;
         }
         .bg_01{
-            background: url("./res/bg_01.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_01.jpg") 0 0 no-repeat;
         }
         .bg_02{
-            background: url("./res/bg_02.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_02.jpg") 0 0 no-repeat;
         }
         .bg_03{
-            background: url("./res/bg_03.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_03.jpg") 0 0 no-repeat;
         }
         .top{
             position: absolute;
@@ -31,6 +31,7 @@
             width:50%;
         }
     </style>
+    <link rel="stylesheet" href="./css/index.css?v=1.121"/>
 </head>
 <body>
 <div class="top">
@@ -43,5 +44,30 @@
     <div class="page bg_02 hide"></div>
     <div class="page bg_03 hide"></div>
 </div>
+<script src="./js/require.js" data-main="./js/main"></script>
+<script>
+    function  pageReady(){
+
+
+                    require(['zoom','boneAnimate'], function (zoom,QR) {
+
+                        zoom.calc();
+                        /*================Events===================*/
+
+                        QR.init($("#_page5").find('.page'));
+                        $(".leftL").on("click", function () {
+
+                            QR.perv()
+                        });
+                        $(".rigthL").on("click", function () {
+                            QR.next()
+                        });
+                    })
+
+
+
+
+    }
+</script>
 </body>
 </html>

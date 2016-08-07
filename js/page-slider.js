@@ -33,7 +33,7 @@ var pageSlider = function ($) {
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
         pages.each(function (i, v) {
 //                animationstart
-//                var eventName = isWebkit?'webkitAnimationend':'animationend';
+//            var eventName = isWebkit?'webkitAnimationend':'animationend';
 
             $(this)[0].addEventListener(eventName, function () {
 
@@ -45,7 +45,9 @@ var pageSlider = function ($) {
     }
 
     function _pageEndcallBack() {
+
         var that = $(this);
+
 
         that.removeClass("slide");
 
@@ -88,6 +90,8 @@ var pageSlider = function ($) {
             data: data,
             success: function (data) {
                 if (type.call(callback) == "[object Function]") {
+                    data = data.replace(/\<meta [^>]+\>/g,"");
+                    data = data.replace(/\<title [^>]+\>/g,"");
 
                     callback.call(null, data);
                 }
