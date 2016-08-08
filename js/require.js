@@ -1739,9 +1739,6 @@ var requirejs, require, define;
             context.configure(config);
         }
 
-        if(callback){
-            console.log(context.require);
-        }
         return context.require(deps, callback, errback);
     };
 

@@ -92,8 +92,13 @@ var pageSlider = function ($) {
             data: data,
             success: function (data) {
                 if (type.call(callback) == "[object Function]") {
+                    var title = "";
                     data = data.replace(/\<meta [^>]+\>/g,"");
-                    callback.call(null, data);
+                    data = data.replace(/\<title\>[^<]{0,}\<\/title\>/,function(matches){
+                        title=  matches.replace("<title>","").replace("</title>","");
+                        return "";
+                    });
+                    callback.call(null, data,title);
                 }
             }
         });
@@ -122,14 +127,15 @@ var pageSlider = function ($) {
     /**
      * 添加历史记录
      * */
-    function _history(url, data, hasScript) {
+    function _history(url, data, hasScript,title) {
         if(type.call(url)=="[object Object]"){
             hasScript = url.hasScript;
             data = url.data;
             url = url.url;
+            title=url.title;
         }
-        lastModel ={url: url, data: data, hasScript: hasScript};
-        history.push({url: url, data: data, hasScript: hasScript});
+        lastModel ={url: url, data: data, hasScript: hasScript,title:title};
+        history.push({url: url, data: data, hasScript: hasScript,title:title});
     }
 
     /**
@@ -174,12 +180,12 @@ var pageSlider = function ($) {
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
             $(pages[index]).addClass("out").addClass("slide")
             index = nidx;
-
-            _history(lastModel)
+            document.title = lastModel.title;
+            _history(lastModel);
             return;
         }
 
-        _loadPage(url, data, function (res) {
+        _loadPage(url, data, function (res,title) {
 
             var nidx = index == 2 ? 0 : index + 1;
 
@@ -187,12 +193,15 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out").addClass("slide")
             _newPageEventBind( $(pages[nidx]));
             index = nidx;
+            document.title = title;
 
             if (hasScript)
                 _runJs(url);
+
+            _history(url, data, hasScript,title);
         });
 
-        _history(url, data, hasScript);
+
 
     }
     /**
@@ -224,6 +233,7 @@ var pageSlider = function ($) {
 
                     if (model.hasScript)
                         _runJs(model.url);
+                    document.title = model.title;
                 });
             }
             return true
@@ -252,19 +262,21 @@ var pageSlider = function ($) {
         /**
          * 加载新页面
          * */
-        _loadPage(url, null, function (res) {
+        _loadPage(url, null, function (res,title) {
 
             $(pages[index]).html(res);
             _newPageEventBind( $(pages[index]));
+
+            document.title = title;
 
             if (hasScript) {
                 _runJs(url);
             }
 
-
+            _history(url, null, hasScript,title);
         });
 
-        _history(url, null, hasScript);
+
     }
 
     return {
