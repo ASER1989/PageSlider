@@ -6,14 +6,18 @@
     <title></title>
     <link rel="stylesheet" href="./css/index.css"/>
     <link rel="stylesheet" href="./css/page-slider.css"/>
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
 <div id="warp" class="page-box">
 
 </div>
+
 </body>
 </html>
-<script src="./js/require.js" data-main="./js/main.js?v=1.38"></script>
+<script src="./js/require.js" data-main="./js/main.js?v=1.41"></script>
 <script type="text/javascript">
     function pageReady() {
         require(['zepto', 'zoom', "pageSlider"], function ($, zoom, ps) {
@@ -21,6 +25,7 @@
             ps.ready({
                 el: "#warp",
                 url: "./page_1.html",
+                loader:true,
                 onPageStart:function(){
                 },
                 onPageEnd:function(){

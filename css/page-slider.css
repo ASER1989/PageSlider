@@ -110,3 +110,92 @@
 
 }
 .hide{display: none}
+
+/*loading css*/
+.loading{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: gray;
+    z-index: 999;
+    background: rgba(23, 23, 23, 0.39);
+    padding-top: 50%;
+    box-sizing: border-box;
+}
+.loading>.loader{
+    background: url("../res/loading-1.png")  no-repeat;
+    background-size: 100% auto;
+    height: 56px;
+    width: 60px;
+    margin: auto;
+    -webkit-animation-name: runder-run;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: step-start;
+    -webkit-animation-duration: 550ms;
+    transform: scale(.65);
+}
+.loading>.des{
+    text-align: center;
+    color: #FFFFFF;
+}
+@keyframes runder-run{
+    0%, 11.5% {
+        background-position: 0 -3px;
+    }
+    11.51%, 23% {
+        background-position:  0 -56px;
+    }
+    23.01%, 34.5% {
+        background-position:  0 -107px;
+    }
+    34.06%, 46% {
+        background-position:  0 -161px;
+    }
+    46.01%, 56.5% {
+        background-position: 0 -214px;
+    }
+    56.51%, 68% {
+        background-position: 0 -267px;
+    }
+    68.01%, 79.5% {
+        background-position:  0 -320px;
+    }
+    79.51%, 91% {
+        background-position: 0 -373px;
+    }
+    91.01%, 100% {
+        background-position: 0 -426px;
+    }
+}
+@-webkit-keyframes runder-run {
+    0%, 11.5% {
+        background-position: 0 -3px;
+    }
+    11.51%, 23% {
+        background-position:  0 -56px;
+    }
+    23.01%, 34.5% {
+        background-position:  0 -107px;
+    }
+    34.06%, 46% {
+        background-position:  0 -161px;
+    }
+    46.01%, 56.5% {
+        background-position: 0 -214px;
+    }
+    56.51%, 68% {
+        background-position: 0 -267px;
+    }
+    68.01%, 79.5% {
+        background-position:  0 -320px;
+    }
+    79.51%, 91% {
+        background-position: 0 -373px;
+    }
+    91.01%, 100% {
+        background-position: 0 -426px;
+    }
+
+}

@@ -12,7 +12,8 @@ var pageSlider = function ($) {
       pages,
       history = [],
       lastModel = null,
-      transLock = false;
+      transLock = false,
+      loaderBox= document.createElement("div");
 
     var _Event = {
         onPageStart: null,
@@ -76,6 +77,29 @@ var pageSlider = function ($) {
     }
 
     /**
+     * 创建加载框
+     * 使用loaderBox进行管理
+     * */
+    function  _loading(text){
+        text= text||"Loading";
+
+        var lodiv = document.createElement("div");
+        var innerdiv = document.createElement("div");
+
+        lodiv.classList.add("loader");
+
+        innerdiv.classList.add("des");
+        innerdiv.innerText=text;
+
+        loaderBox.classList.add("loading");
+        loaderBox.classList.add("hide");
+        loaderBox.appendChild(lodiv);
+        loaderBox.appendChild(innerdiv);
+
+        document.body.appendChild(loaderBox);
+    }
+
+    /**
      * 加载新页面
      * url:页面地址
      * data:可以用于ajax的data
@@ -86,6 +110,7 @@ var pageSlider = function ($) {
             callback = data;
             data = null;
         }
+        loaderBox.classList.remove("hide");
         $.ajax({
             url: url,
             type: "GET",
@@ -101,6 +126,7 @@ var pageSlider = function ($) {
                     data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g, "");
 
                     callback.call(null, data, title);
+                    loaderBox.classList.add("hide");
                 }
             }
         });
@@ -321,6 +347,7 @@ var pageSlider = function ($) {
 
     }
 
+
     return {
         ready: function (options) {
 
@@ -330,6 +357,9 @@ var pageSlider = function ($) {
 
             _Event.onPageEnd = options.onPageEnd;
             _Event.onPageStart = options.onPageStart;
+            if(options.loader==true){
+                _loading();
+            }
 
 
         },
