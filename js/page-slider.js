@@ -30,13 +30,15 @@ var pageSlider = function ($) {
      *事件监听
      **/
     function _eventListener(pages, eventName, callback) {
+        //webkit支持webkitAnimationEnd这样的事件.A和E/S大写
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
+        eventName = isWebkit?"webkit" + eventName.replace(/^a|s|e/g, function(matchs) {
+            return matchs.toUpperCase();
+        }):eventName;
+
         pages.each(function (i, v) {
-//                animationstart
-//            var eventName = isWebkit?'webkitAnimationend':'animationend';
 
-            $(this)[0].addEventListener(eventName, function () {
-
+            $(v)[0].addEventListener(eventName, function () {
                 if (type.call(callback) == "[object Function]") {
                     callback.call(this);
                 }
@@ -91,8 +93,6 @@ var pageSlider = function ($) {
             success: function (data) {
                 if (type.call(callback) == "[object Function]") {
                     data = data.replace(/\<meta [^>]+\>/g,"");
-                    data = data.replace(/\<title [^>]+\>/g,"");
-
                     callback.call(null, data);
                 }
             }

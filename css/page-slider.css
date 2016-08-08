@@ -19,9 +19,9 @@
 }
 .slide.out, .slide.in {
     -webkit-animation-timing-function: ease-out;
-    -webkit-animation-duration: 725ms;
+    -webkit-animation-duration: 525ms;
     animation-timing-function: ease-out;
-    animation-duration: 725ms;
+    animation-duration: 525ms;
 }
 
 .slide.reverse.out {

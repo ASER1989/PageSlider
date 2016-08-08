@@ -14,10 +14,9 @@
     }
     function eventListener(pages){
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
+
         pages.each(function(i,v){
-//                animationstart
-//                var eventName = isWebkit?'webkitAnimationend':'animationend';
-            var eventName = 'animationend';
+            var eventName = isWebkit?'webkitAnimationEnd':'animationend';
             $(this)[0].addEventListener(eventName,function(){
                 $(this).removeClass("slide");
                 if($(this).hasClass("out")){
