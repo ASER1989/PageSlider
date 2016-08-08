@@ -189,8 +189,10 @@ var pageSlider = function ($) {
 
             var nidx = index == 2 ? 0 : index + 1;
 
-            $(pages[nidx]).html(res).removeClass("hide").addClass("in").addClass("slide");
-            $(pages[index]).addClass("out").addClass("slide")
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
+            $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).html(res);
+
             _newPageEventBind( $(pages[nidx]));
             index = nidx;
             document.title = title;

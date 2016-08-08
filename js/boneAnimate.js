@@ -17,7 +17,7 @@
 
         pages.each(function(i,v){
             var eventName = isWebkit?'webkitAnimationEnd':'animationend';
-            $(this)[0].addEventListener(eventName,function(){
+            $(v)[0].addEventListener(eventName,function(){
                 $(this).removeClass("slide");
                 if($(this).hasClass("out")){
                     $(this).addClass("hide");
@@ -30,7 +30,7 @@
         })
     }
     function next(){
-        var nidx = index<pages.length-1? index+1:0;;
+        var nidx = index<pages.length-1? index+1:0;
         if( isReady &&!isLock){
             isLock =true;
 
