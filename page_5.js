@@ -8,7 +8,7 @@ function ready() {
 
         /*================Events===================*/
 
-        QR.init($("#_page5").find('.page'));
+        QR.init($("#_page5").find('.page'), $(".bar-box").find(".bar-item"));
         $(".leftL").on("click", function () {
 
             QR.perv()

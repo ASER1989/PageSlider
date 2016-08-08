@@ -3,17 +3,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <title></title>
+    <title>滑动广告</title>
     <style>
 
         .bg_01{
-            background: url("./res/bg_01.jpg") 0 0 no-repeat;
+            background: url("./res/bg-1.jpg") center no-repeat;
+            background-size: 100% auto;
         }
         .bg_02{
-            background: url("./res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg-2.jpg") center no-repeat;
+            background-size: 100% auto;
         }
         .bg_03{
-            background: url("./res/bg_03.jpg") 0 0 no-repeat;
+            background: url("./res/bg-3.jpg") center no-repeat;
+            background-size: 100% auto;
         }
 
         #_page5{
@@ -24,13 +27,45 @@
             top: 0;
         }
 
+        .bar {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            /*text-align: center;*/
+        }
+
+        .bar-box {
+            display: box;
+            display: -webkit-box;
+            height: 10px;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+        }
+
+        .bar-item {
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            border: solid 1px gray;
+            background-color: #FFFFFF;
+            padding: 0 10px;
+            margin: 0 3px;
+            /*text-align: right;*/
+        }
+
+        .hover {
+            background-color: grey !important;
+        }
+
     </style>
     <link data-remove="true" rel="stylesheet" href="./css/index.css?v=1.001"/>
     <link data-remove="true" rel="stylesheet" href="./css/page-slider.css"/>
 </head>
 <body>
 <div class="top">
-    <div style="text-align: left"data-page="goback()"> 返回 </div>
+    <div class="back" style="text-align: left" data-page="goback()"> 返回 </div>
 </div>
 <div id="_page5">
     <div class="imgLR-bt leftL">上一页</div>
@@ -38,7 +73,17 @@
     <div class="page bg_01"></div>
     <div class="page bg_02 hide"></div>
     <div class="page bg_03 hide"></div>
-</div>
 
+    <div class="bar">
+        <div class="bar-box">
+            <div class="bar-item hover"></div>
+            <div class="bar-item"></div>
+            <div class="bar-item"></div>
+        </div>
+    </div>
+</div>
+<div>
+
+</div>
 </body>
 </html>
