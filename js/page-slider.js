@@ -98,6 +98,8 @@ var pageSlider = function ($) {
                         title=  matches.replace("<title>","").replace("</title>","");
                         return "";
                     });
+                    data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g,"");
+
                     callback.call(null, data,title);
                 }
             }
@@ -298,3 +300,12 @@ var pageSlider = function ($) {
         goBack: _goBack
     }
 }
+/**
+ * html节点属性说明
+ * *****************************************************
+ *
+ * data-page            : 点击跳转到对应页面
+ * data-hasScript=true  : 加载与页面同名且同路径的js文件
+ * data-remove          : 页面加载时不加载该节点
+ *
+ * */
