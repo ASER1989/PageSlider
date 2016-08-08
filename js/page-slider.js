@@ -289,6 +289,7 @@ var pageSlider = function ($) {
             index = nidx;
 
             if (model) {
+                $(pages[index]).html("");
                 if (type.call(model.data) == "[object Boolean]") {
                     model.hasScript = model.data;
                     model.data = null;
