@@ -1,28 +1,31 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 <html lang="en">
 <head>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/page-slider.css"/>
 </head>
 <body>
-<div id="warp">
+<div id="warp" class="page-box">
 
 </div>
 </body>
 </html>
-<script src="./js/require.js" data-main="./js/main"></script>
+<script src="./js/require.js" data-main="./js/main.js?v=1.35"></script>
 <script type="text/javascript">
-    var QR;
     function pageReady() {
-        require(['zepto', 'zoom', "page-slider.min"], function ($, zoom, ps) {
+        require(['zepto', 'zoom', "pageSlider"], function ($, zoom, ps) {
+            zoom.calc();
             ps.ready({
                 el: "#warp",
-                url: "./page_1.html"
+                url: "./page_1.html",
+                onPageStart:function(){
+                },
+                onPageEnd:function(){
+                }
             });
-            QR = ps;
         });
     }
 </script>

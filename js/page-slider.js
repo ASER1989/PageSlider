@@ -11,13 +11,13 @@ var pageSlider = function ($) {
     var index = 1,
       pages,
       history = [],
-      lastModel =null,
-      transLock =false;
+      lastModel = null,
+      transLock = false;
 
-    var _Event={
-        onPageStart:null,
-        onPageEnd:null
-    } ;
+    var _Event = {
+        onPageStart: null,
+        onPageEnd: null
+    };
 
     var type = Object.prototype.toString;
 
@@ -30,13 +30,15 @@ var pageSlider = function ($) {
      *事件监听
      **/
     function _eventListener(pages, eventName, callback) {
+        //webkit支持webkitAnimationEnd这样的事件.A和E/S大写
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
+        eventName = isWebkit ? "webkit" + eventName.replace(/^a|s|e/g, function (matchs) {
+            return matchs.toUpperCase();
+        }) : eventName;
+
         pages.each(function (i, v) {
-//                animationstart
-//                var eventName = isWebkit?'webkitAnimationend':'animationend';
 
-            $(this)[0].addEventListener(eventName, function () {
-
+            $(v)[0].addEventListener(eventName, function () {
                 if (type.call(callback) == "[object Function]") {
                     callback.call(this);
                 }
@@ -45,7 +47,9 @@ var pageSlider = function ($) {
     }
 
     function _pageEndcallBack() {
+
         var that = $(this);
+
 
         that.removeClass("slide");
 
@@ -88,8 +92,15 @@ var pageSlider = function ($) {
             data: data,
             success: function (data) {
                 if (type.call(callback) == "[object Function]") {
+                    var title = "";
+                    data = data.replace(/\<meta [^>]+\>/g, "");
+                    data = data.replace(/\<title\>[^<]{0,}\<\/title\>/, function (matches) {
+                        title = matches.replace("<title>", "").replace("</title>", "");
+                        return "";
+                    });
+                    data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g, "");
 
-                    callback.call(null, data);
+                    callback.call(null, data, title);
                 }
             }
         });
@@ -104,6 +115,7 @@ var pageSlider = function ($) {
         //return
         try {
             var jsname = url.replace('.html', '.js');
+
             require([jsname], function (pagejs) {
                 pagejs.ready();
             }, function () {
@@ -115,35 +127,59 @@ var pageSlider = function ($) {
 
     }
 
+    function _jsLoader(url, callback) {
+        //return
+
+        var jsname = url.replace('.html', '.js');
+        $.get(jsname, function (data) {
+            var fnName = roundName();
+            data = "function "+fnName+"(){"+data+"};fnName();"
+
+        });
+
+        function roundName(){
+            var keys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+            var nl = (Math.random(0)*7).toFixed(0);
+            var fnName="_page_";
+            for(var i = 0;i<nl;i++){
+                fnName+=keys[(Math.random(0)*26).toFixed(0)];
+            }
+
+            return fnName;
+        }
+
+    }
+
     /**
      * 添加历史记录
      * */
-    function _history(url, data, hasScript) {
-        if(type.call(url)=="[object Object]"){
+    function _history(url, data, hasScript, title) {
+        if (type.call(url) == "[object Object]") {
             hasScript = url.hasScript;
             data = url.data;
             url = url.url;
+            title = url.title;
         }
-        lastModel ={url: url, data: data, hasScript: hasScript};
-        history.push({url: url, data: data, hasScript: hasScript});
+        lastModel = {url: url, data: data, hasScript: hasScript, title: title};
+        history.push({url: url, data: data, hasScript: hasScript, title: title});
     }
 
     /**
      * 新页面事件绑定
      * 为有data-page属性的元素添加事件绑定
      * **/
-    function _newPageEventBind(custPage){
-        custPage.find("[data-page]").forEach(function(v,i){
+    function _newPageEventBind(custPage) {
+        custPage.find("[data-page]").forEach(function (v, i) {
             var that = $(v);
             var link = that.attr("data-page");
 
-            if(link.length>0 && link !="goback()"){
+            if (link.length > 0 && link != "goback()") {
                 var hasScript = that.attr("data-hasScript");
-                that.on("click",function(){
-                    _transToPage(link,null,hasScript);
+                that.on("click", function () {
+                    _transToPage(link, null, hasScript);
                 });
-            }else if(link == "goback()"){
-                that.on("click",function(){
+            } else if (link == "goback()") {
+                that.on("click", function () {
                     _goBack();
                 });
             }
@@ -152,53 +188,59 @@ var pageSlider = function ($) {
 
 
     }
+
     /**
      * 跳转至新页面
      * 如果是后退后再次打开上次页面则直接使用上次加载的页面
      * (此处存在不准确判断 data==data ; 无法对对象进行对比.)
      * */
-    function _transToPage (url, data, hasScript) {
-        if(transLock) return;
+    function _transToPage(url, data, hasScript) {
+        if (transLock) return;
 
         if (type.call(data) == "[object Boolean]") {
             hasScript = data;
             data = null;
         }
-        if(lastModel && lastModel.url==url && lastModel.data==data && lastModel.hasScript ==hasScript){
+        if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
             var nidx = index == 2 ? 0 : index + 1;
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
             $(pages[index]).addClass("out").addClass("slide")
             index = nidx;
-
-            _history(lastModel)
+            document.title = lastModel.title;
+            _history(lastModel);
             return;
         }
 
-        _loadPage(url, data, function (res) {
+        _loadPage(url, data, function (res, title) {
 
             var nidx = index == 2 ? 0 : index + 1;
 
-            $(pages[nidx]).html(res).removeClass("hide").addClass("in").addClass("slide");
-            $(pages[index]).addClass("out").addClass("slide")
-            _newPageEventBind( $(pages[nidx]));
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
+            $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).html(res);
+
+            _newPageEventBind($(pages[nidx]));
             index = nidx;
+            document.title = title;
 
             if (hasScript)
                 _runJs(url);
+
+            _history(url, data, hasScript, title);
         });
 
-        _history(url, data, hasScript);
 
     }
+
     /**
      * 返回前一页面
      * */
-    function _goBack () {
-        if(transLock) return;
+    function _goBack() {
+        if (transLock) return;
 
         if (history.length > 1) {
-            lastModel=history.pop();
+            lastModel = history.pop();
             var model = history[history.length - 1];
 
 
@@ -216,10 +258,11 @@ var pageSlider = function ($) {
                 }
                 _loadPage(model.url, model.data, function (res) {
                     $(pages[index]).html(res);
-                    _newPageEventBind( $(pages[index]));
+                    _newPageEventBind($(pages[index]));
 
                     if (model.hasScript)
                         _runJs(model.url);
+                    document.title = model.title;
                 });
             }
             return true
@@ -227,7 +270,8 @@ var pageSlider = function ($) {
         return false
 
     }
-    function  _init(container, url, hasScript) {
+
+    function _init(container, url, hasScript) {
         /**
          *容器初始化
          **/
@@ -248,31 +292,32 @@ var pageSlider = function ($) {
         /**
          * 加载新页面
          * */
-        _loadPage(url, null, function (res) {
+        _loadPage(url, null, function (res, title) {
 
             $(pages[index]).html(res);
-            _newPageEventBind( $(pages[index]));
+            _newPageEventBind($(pages[index]));
+
+            document.title = title;
 
             if (hasScript) {
                 _runJs(url);
             }
 
-
+            _history(url, null, hasScript, title);
         });
 
-        _history(url, null, hasScript);
+
     }
 
     return {
         ready: function (options) {
 
-            if(options.el && options.url){
-                _init(options.el,options.url,options.hasScript);
+            if (options.el && options.url) {
+                _init(options.el, options.url, options.hasScript);
             }
 
             _Event.onPageEnd = options.onPageEnd;
             _Event.onPageStart = options.onPageStart;
-
 
 
         },
@@ -280,3 +325,12 @@ var pageSlider = function ($) {
         goBack: _goBack
     }
 }
+/**
+ * html节点属性说明
+ * *****************************************************
+ *
+ * data-page            : 点击跳转到对应页面
+ * data-hasScript=true  : 加载与页面同名且同路径的js文件
+ * data-remove          : 页面加载时不加载该节点
+ *
+ * */

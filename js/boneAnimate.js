@@ -14,11 +14,10 @@
     }
     function eventListener(pages){
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
+
         pages.each(function(i,v){
-//                animationstart
-//                var eventName = isWebkit?'webkitAnimationend':'animationend';
-            var eventName = 'animationend';
-            $(this)[0].addEventListener(eventName,function(){
+            var eventName = isWebkit?'webkitAnimationEnd':'animationend';
+            $(v)[0].addEventListener(eventName,function(){
                 $(this).removeClass("slide");
                 if($(this).hasClass("out")){
                     $(this).addClass("hide");
@@ -31,14 +30,15 @@
         })
     }
     function next(){
-        var nidx = index<pages.length-1? index+1:0;;
+        var nidx = index<pages.length-1? index+1:0;
         if( isReady &&!isLock){
             isLock =true;
 
-            $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
             $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
 
-            index=nidx
+
+            index=nidx;
 
         }
 
@@ -48,8 +48,8 @@
         var nidx = index>=1?index-1:pages.length-1;
         if( isReady && !isLock){
             isLock = true;
-            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             index=nidx;
         }
     }

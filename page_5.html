@@ -5,43 +5,40 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        img{
-            width:100%;
-        }
+
         .bg_01{
-            background: url("./res/bg_01.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_01.jpg") 0 0 no-repeat;
         }
         .bg_02{
-            background: url("./res/bg_02.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_02.jpg") 0 0 no-repeat;
         }
         .bg_03{
-            background: url("./res/bg_03.jpg") 0 0 no-repeat,url("../res/bg_02.jpg") 0 0 no-repeat;
+            background: url("./res/bg_03.jpg") 0 0 no-repeat;
         }
-        .top{
-            position: absolute;
-            z-index: 10;
-            height: 30px;
-            width:100%;
-            background-color: rgba(169, 169, 169, 0.29);
-            display: -webkit-box;
-            display:box;
-            line-height: 30px;
+
+        #_page5{
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            left: 0;
+            top: 0;
         }
-        .top >div{
-            width:50%;
-        }
+
     </style>
+    <link data-remove="true" rel="stylesheet" href="./css/index.css?v=1.001"/>
+    <link data-remove="true" rel="stylesheet" href="./css/page-slider.css"/>
 </head>
 <body>
 <div class="top">
     <div style="text-align: left"data-page="goback()"> 返回 </div>
 </div>
 <div id="_page5">
-    <div class="leftL">上一页</div>
-    <div class="rigthL">下一页</div>
+    <div class="imgLR-bt leftL">上一页</div>
+    <div class="imgLR-bt rigthL">下一页</div>
     <div class="page bg_01"></div>
     <div class="page bg_02 hide"></div>
     <div class="page bg_03 hide"></div>
 </div>
+
 </body>
 </html>
