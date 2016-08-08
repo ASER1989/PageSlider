@@ -107,7 +107,7 @@ var pageSlider = function ($) {
     }
 
     /**
-     * 加载页面js
+     * 加载页面js(已过时)
      * 并执行被加载文件的ready函数
      * 此处约定被加载文件与页面同名,且包含ready初始化函数,否则可能无法被执行
      * */
@@ -127,22 +127,33 @@ var pageSlider = function ($) {
 
     }
 
-    function _jsLoader(url, callback) {
+    /**
+     * 加载js文件,并创建一个随机函数名的函数
+     * 函数内容为js内容
+     * 最后执行该函数
+     * 如果函数内包含ready方法,则执行ready()
+     * */
+    function _jsLoader(url, page, callback) {
         //return
 
         var jsname = url.replace('.html', '.js');
         $.get(jsname, function (data) {
             var fnName = roundName();
-            data = "function "+fnName+"(){"+data+"};fnName();"
+            data = "function " + fnName + "(){" + data + " ; if(typeof ready=='function'){ready();}};"
+            data += fnName + "();";
+            $(page).append("<script>" + data + "</script>");
 
+            if (type.call(callback) == "[object Function]") {
+                callback.call();
+            }
         });
 
-        function roundName(){
-            var keys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-            var nl = (Math.random(0)*7).toFixed(0);
-            var fnName="_page_";
-            for(var i = 0;i<nl;i++){
-                fnName+=keys[(Math.random(0)*26).toFixed(0)];
+        function roundName() {
+            var keys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            var nl = (Math.random(0) * 7).toFixed(0);
+            var fnName = "_page_";
+            for (var i = 0; i < nl; i++) {
+                fnName += keys[(Math.random(0) * 26).toFixed(0)];
             }
 
             return fnName;
@@ -225,7 +236,7 @@ var pageSlider = function ($) {
             document.title = title;
 
             if (hasScript)
-                _runJs(url);
+                _jsLoader(url, pages[nidx]);
 
             _history(url, data, hasScript, title);
         });
@@ -261,7 +272,7 @@ var pageSlider = function ($) {
                     _newPageEventBind($(pages[index]));
 
                     if (model.hasScript)
-                        _runJs(model.url);
+                        _jsLoader(model.url, pages[index]);
                     document.title = model.title;
                 });
             }
@@ -300,7 +311,8 @@ var pageSlider = function ($) {
             document.title = title;
 
             if (hasScript) {
-                _runJs(url);
+                //_runJs(url);
+                _jsLoader(url, pages[index]);
             }
 
             _history(url, null, hasScript, title);

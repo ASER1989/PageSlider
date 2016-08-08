@@ -1,24 +1,22 @@
 /**
  * Created by aser on 16/8/5.
  */
-;define(['zepto'], function () {
-    return {
-        ready: function () {
 
-            require(['boneAnimate'], function (QR) {
+function ready() {
 
-                /*================Events===================*/
+    require(['zepto','boneAnimate'], function ($,QR) {
 
-                QR.init($("#_page5").find('.page'));
-                $(".leftL").on("click", function () {
+        /*================Events===================*/
 
-                    QR.perv()
-                });
-                $(".rigthL").on("click", function () {
-                    QR.next()
-                });
-            })
+        QR.init($("#_page5").find('.page'));
+        $(".leftL").on("click", function () {
 
-        }
-    }
-})
+            QR.perv()
+        });
+        $(".rigthL").on("click", function () {
+            QR.next()
+        });
+    })
+
+}
+

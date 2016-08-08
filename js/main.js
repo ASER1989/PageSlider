@@ -10,8 +10,8 @@
             zepto:"zepto",
             underscore:"underscore",
             zoom:"zoom",
-            boneAnimate:"boneAnimate.js?v=1.136",
-            pageSlider:"page-slider.js?v=1.36"
+            boneAnimate:"boneAnimate.js?v=1.37",
+            pageSlider:"page-slider.js?v=1.37"
         },
         shim: {
 
