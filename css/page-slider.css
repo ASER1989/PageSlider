@@ -95,7 +95,7 @@
 
 .page-box{
     width:100%;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     height: 100%;
     left:0;
