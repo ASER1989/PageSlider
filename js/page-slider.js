@@ -284,13 +284,13 @@ var pageSlider = function ($) {
 
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
-            $(pages[nidx]).removeClass("hide").addClass("in");
+            $(pages[nidx]).addClass("in");
             $(pages[index]).addClass("out");
 
             document.title = lastModel.title;
-            alert(1);
+            $(pages[index]).offset = $(pages[index]).offset;
 
-            $(pages[nidx]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide");
             $(pages[index]).addClass("slide");
 
             index = nidx;
@@ -299,14 +299,14 @@ var pageSlider = function ($) {
         }
 
         _loadPage(url, data, function (res, title) {
-
-
-            $(pages[nidx]).removeClass("hide").addClass("in");
+            
+            $(pages[nidx]).addClass("in");
             $(pages[index]).addClass("out");
 
             document.title = title;
-            alert(1);
-            $(pages[nidx]).addClass("slide").html("");
+            $(pages[index]).offset = $(pages[index]).offset;
+
+            $(pages[nidx]).removeClass("hide").addClass("slide").html("");
             $(pages[index]).addClass("slide");
 
 
@@ -338,13 +338,14 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            $(pages[index]).addClass("reverse").addClass("out");
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse");
+            $(pages[index]).addClass("reverse out");
+            $(pages[nidx]).addClass("in reverse");
 
             document.title = model.title;
-            alert(1);
+            $(pages[index]).offset = $(pages[index]).offset;
+
             $(pages[index]).addClass("slide");
-            $(pages[nidx]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide");
 
             index = nidx;
 
