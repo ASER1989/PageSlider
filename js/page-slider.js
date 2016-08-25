@@ -279,14 +279,7 @@ var pageSlider = function ($) {
             //$(pages[index]).addClass("out").addClass("slide")
             $(pages[nidx])[0].classList.remove("hide");
             $(pages[nidx])[0].classList.adds("in slide");
-
-            var ele =  $(pages[index])[0];
-            setTimeout(function(){
-
-                ele.classList.adds("out slide");
-                alert(ele.classList);
-            },0);
-
+            $(pages[index])[0].classList.adds("out slide");
 
             index = nidx;
             document.title = lastModel.title;
@@ -317,6 +310,7 @@ var pageSlider = function ($) {
             _history(url, data, hasScript, title);
         });
 
+
     }
 
     /**
@@ -337,15 +331,7 @@ var pageSlider = function ($) {
 
             $(pages[nidx])[0].classList.remove("hide");
             $(pages[nidx])[0].classList.adds("in reverse slide");
-            //$(pages[index])[0].classList.adds("reverse out slide");
-
-            var ele =  $(pages[index])[0];
-            setTimeout(function(){
-
-                ele.classList.adds("reverse out slide");
-                alert(ele.classList);
-            },0);
-
+            $(pages[index])[0].classList.adds("reverse out slide");
 
             index = nidx;
             document.title = model.title;
