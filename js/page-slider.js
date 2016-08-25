@@ -279,7 +279,12 @@ var pageSlider = function ($) {
             //$(pages[index]).addClass("out").addClass("slide")
             $(pages[nidx])[0].classList.remove("hide");
             $(pages[nidx])[0].classList.adds("in slide");
-            $(pages[index])[0].classList.adds("out slide");
+
+            var ele =  $(pages[index])[0];
+            setTimeout(function(){
+                ele.classList.adds("out slide");
+            },0);
+
 
             index = nidx;
             document.title = lastModel.title;
