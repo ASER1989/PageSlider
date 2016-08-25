@@ -299,7 +299,7 @@ var pageSlider = function ($) {
         }
 
         _loadPage(url, data, function (res, title) {
-            
+
             $(pages[nidx]).addClass("in");
             $(pages[index]).addClass("out");
 
