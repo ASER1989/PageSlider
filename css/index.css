@@ -61,3 +61,18 @@ img{
     border-top-left-radius: 3px;
 }
 
+.content{
+    text-indent:2em;
+    letter-spacing:1px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 0.55rem;
+    text-align:justify;
+}
+
+.link
+{
+    color: #0909a2;
+    padding-left: 3px;
+    font-weight: 600;
+}
