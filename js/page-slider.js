@@ -15,7 +15,7 @@ var pageSlider = function ($) {
       preModel = null,
       transLock = false,
       loaderBox = document.createElement("div");
-    loaderBox.isPre=false;
+      loaderBox.isPre=false;
 
     var _Event = {
         onPageStart: null,
@@ -288,7 +288,7 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out");
 
             document.title = lastModel.title;
-            $(pages[index]).offset = $(pages[index]).offset;
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
 
             $(pages[nidx]).removeClass("hide").addClass("slide");
             $(pages[index]).addClass("slide");
@@ -304,7 +304,7 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out");
 
             document.title = title;
-            $(pages[index]).offset = $(pages[index]).offset;
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
 
             $(pages[nidx]).removeClass("hide").addClass("slide").html("");
             $(pages[index]).addClass("slide");
@@ -342,7 +342,7 @@ var pageSlider = function ($) {
             $(pages[nidx]).addClass("in reverse");
 
             document.title = model.title;
-            $(pages[index]).offset = $(pages[index]).offset;
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
 
             $(pages[index]).addClass("slide");
             $(pages[nidx]).removeClass("hide").addClass("slide");

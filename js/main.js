@@ -3,7 +3,7 @@
  */
 
 
-    var version = "1.73";
+    var version = "1.74";
     require.config({
         //bathUrl:"../../",
         paths:{
