@@ -80,3 +80,6 @@ img{
     width:1.8rem;
     margin-top: 0.25rem;
 }
+.banner-img{
+    min-height: 20rem;
+}
