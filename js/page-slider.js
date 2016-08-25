@@ -282,8 +282,9 @@ var pageSlider = function ($) {
 
             var ele =  $(pages[index])[0];
             setTimeout(function(){
-                alert(1);
+
                 ele.classList.adds("out slide");
+                alert(ele.classList);
             },0);
 
 
@@ -316,7 +317,6 @@ var pageSlider = function ($) {
             _history(url, data, hasScript, title);
         });
 
-
     }
 
     /**
@@ -337,7 +337,15 @@ var pageSlider = function ($) {
 
             $(pages[nidx])[0].classList.remove("hide");
             $(pages[nidx])[0].classList.adds("in reverse slide");
-            $(pages[index])[0].classList.adds("reverse out slide");
+            //$(pages[index])[0].classList.adds("reverse out slide");
+
+            var ele =  $(pages[index])[0];
+            setTimeout(function(){
+
+                ele.classList.adds("reverse out slide");
+                alert(ele.classList);
+            },0);
+
 
             index = nidx;
             document.title = model.title;
