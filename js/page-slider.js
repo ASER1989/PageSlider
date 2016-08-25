@@ -328,9 +328,8 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
             $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
 
             index = nidx;
             document.title = model.title;
