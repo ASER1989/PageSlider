@@ -15,6 +15,7 @@ var pageSlider = function ($) {
       preModel = null,
       transLock = false,
       loaderBox = document.createElement("div");
+    loaderBox.isPre=false;
 
     var _Event = {
         onPageStart: null,
@@ -143,7 +144,10 @@ var pageSlider = function ($) {
             callback = data;
             data = null;
         }
-        loaderBox.classList.remove("hide");
+        if(!loaderBox.isPre)
+            loaderBox.classList.remove("hide");
+
+        var reqTime = (new Date()).getTime();
         $.ajax({
             url: url,
             type: "GET",
@@ -158,8 +162,13 @@ var pageSlider = function ($) {
                     });
                     data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g, "");
 
+                    var resTime =1500-((new Date()).getTime()-reqTime);
+
                     callback.call(null, data, title);
-                    loaderBox.classList.add("hide");
+                    setTimeout(function(){ 
+                        loaderBox.classList.add("hide");
+                    },resTime>0?resTime:0);
+
                 }
             }
         });
@@ -326,12 +335,8 @@ var pageSlider = function ($) {
 
             var nidx = index == 0 ? 2 : index - 1;
 
-            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
-            //$(pages[index]).addClass("reverse").addClass("out").addClass("slide");
-
-            $(pages[nidx])[0].classList.remove("hide");
-            $(pages[nidx])[0].classList.adds("in reverse slide");
-            $(pages[index])[0].classList.adds("reverse out slide");
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
 
             index = nidx;
             document.title = model.title;
@@ -356,7 +361,8 @@ var pageSlider = function ($) {
 
                 var premodel =  history[history.length - 2];
                 var preidx = index == 0 ? 2 : index - 1;
-                _preLoad(premodel,pages[preidx]);
+                loaderBox.isPre = true;
+                _preLoad(premodel,pages[preidx],function(){loaderBox.isPre=false;});
             }
 
             return true
