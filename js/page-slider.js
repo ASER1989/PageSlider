@@ -270,14 +270,16 @@ var pageSlider = function ($) {
             hasScript = data;
             data = null;
         }
+
+        var nidx = index == 2 ? 0 : index + 1;
+
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
-            var nidx = index == 2 ? 0 : index + 1;
             //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
             //$(pages[index]).addClass("out").addClass("slide")
-            $(pages[nidx])[0].classList.remove("hide")
+            $(pages[nidx])[0].classList.remove("hide");
             $(pages[nidx])[0].classList.adds("in slide");
-            $(pages[index])[0].classList.adds("out slide")
+            $(pages[index])[0].classList.adds("out slide");
 
             index = nidx;
             document.title = lastModel.title;
@@ -286,8 +288,6 @@ var pageSlider = function ($) {
         }
 
         _loadPage(url, data, function (res, title) {
-
-            var nidx = index == 2 ? 0 : index + 1;
 
 
             //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
