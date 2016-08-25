@@ -4,6 +4,26 @@
     box-sizing: border-box;
 
 }
+a, img {
+    -webkit-touch-callout: none;
+}
+body {
+    margin: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-touch-action: none;
+}
+
+/* construction */
+html, body {
+    height: 100%; width: 100%;
+    overflow: hidden;
+}
+
+.in, .out {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
 
 .slide.in {
     -moz-animation-name: slideinfromright;
