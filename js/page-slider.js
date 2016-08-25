@@ -15,16 +15,14 @@ var pageSlider = function ($) {
       preModel = null,
       transLock = false,
       loaderBox = document.createElement("div");
-    loaderBox.isPre = false;
+    loaderBox.isPre=false;
 
     var _Event = {
         onPageStart: null,
         onPageEnd: null
     };
 
-    var type = new function () {
-        return Object.prototype.toString;
-    };
+    var type = new function (){ return Object.prototype.toString;};
 
     type.isFunction = function (obj) {
         return type.call(obj) === "[object Function]";
@@ -90,8 +88,8 @@ var pageSlider = function ($) {
 
     }
 
-    function _modelEques(model1, model2) {
-        if (model1 == null || model2 == null) {
+    function _modelEques(model1,model2){
+        if(model1==null || model2==null){
             return false;
         }
         var res = true;
@@ -99,12 +97,12 @@ var pageSlider = function ($) {
         res = model1.url == model2.url;
         res = model1.hasScript == model2.hasScript;
 
-        if (model1.data && model1.data.length > 0) {
-            for (var n in model1.data) {
-                if (model1.data[n] != null || model2.data[n] != null) {
-                    res = model1.data[n] == model2.data[n];
+        if(model1.data && model1.data.length>0){
+            for(var n in model1.data){
+                if(model1.data[n]!=null || model2.data[n]!=null ){
+                  res= model1.data[n] ==model2.data[n];
                 }
-                if (!res) {
+                if(!res){
                     break;
                 }
 
@@ -112,7 +110,6 @@ var pageSlider = function ($) {
         }
         return res;
     }
-
     /**
      * 创建加载框
      * 使用loaderBox进行管理
@@ -147,7 +144,7 @@ var pageSlider = function ($) {
             callback = data;
             data = null;
         }
-        if (!loaderBox.isPre)
+        if(!loaderBox.isPre)
             loaderBox.classList.remove("hide");
 
         var reqTime = (new Date()).getTime();
@@ -165,12 +162,12 @@ var pageSlider = function ($) {
                     });
                     data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g, "");
 
-                    var resTime = 1000 - ((new Date()).getTime() - reqTime);
+                    var resTime =1000-((new Date()).getTime()-reqTime);
 
                     callback.call(null, data, title);
-                    setTimeout(function () {
+                    setTimeout(function(){
                         loaderBox.classList.add("hide");
-                    }, resTime > 0 ? resTime : 0);
+                    },resTime>0?resTime:0);
 
                 }
             }
@@ -291,37 +288,32 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out");
 
             document.title = lastModel.title;
+            $(pages[index]).offset = $(pages[index]).offset;
 
-            setTimeout(function () {
-                $(pages[nidx]).removeClass("hide").addClass("slide");
-                $(pages[index]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[index]).addClass("slide");
 
-                index = nidx;
-            }, 0);
-
+            index = nidx;
             _history(lastModel);
             return;
         }
 
         _loadPage(url, data, function (res, title) {
 
-            $(pages[nidx]).addClass("in");
+            $(pages[nidx]).addClass("in").html(res);
             $(pages[index]).addClass("out");
 
             document.title = title;
+            $(pages[index]).offset = $(pages[index]).offset;
 
-            setTimeout(function () {
-                $(pages[nidx]).removeClass("hide").addClass("slide").html("");
-                $(pages[index]).addClass("slide");
-
-                $(pages[nidx]).html(res);
-
-                _newPageEventBind($(pages[nidx]));
-                index = nidx;
-
-            },0);
+            $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[index]).addClass("slide");
 
 
+            //$(pages[nidx]).html(res);
+
+            _newPageEventBind($(pages[nidx]));
+            index = nidx;
 
 
             if (hasScript)
@@ -350,13 +342,12 @@ var pageSlider = function ($) {
             $(pages[nidx]).addClass("in reverse");
 
             document.title = model.title;
+            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
 
-            setTimeout(function () {
-                $(pages[index]).addClass("slide");
-                $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[index]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide");
 
-                index = nidx;
-            },0);
+            index = nidx;
 
             //if (!_modelEques(model,preModel) && model) {
             //    if (type.isBoolean(model.data)) {
@@ -374,12 +365,12 @@ var pageSlider = function ($) {
             //    });
             //}
 
-            if (history.length > 1) {
-                var premodel = history[history.length - 2];
+            if(history.length>1){
+                var premodel =  history[history.length - 2];
                 var preidx = index == 0 ? 2 : index - 1;
                 loaderBox.isPre = true;
-                _preLoad(premodel, pages[preidx], function () {
-                    loaderBox.isPre = false;
+                _preLoad(premodel,pages[preidx],function(){
+                    loaderBox.isPre=false;
                 });
             }
 
@@ -393,7 +384,7 @@ var pageSlider = function ($) {
      * 预加载
      *
      * */
-    function _preLoad(model, custPage) {
+    function _preLoad(model,custPage){
         if (model) {
             $(custPage).html("");
             preModel = model;
