@@ -165,7 +165,7 @@ var pageSlider = function ($) {
                     var resTime =1500-((new Date()).getTime()-reqTime);
 
                     callback.call(null, data, title);
-                    setTimeout(function(){ 
+                    setTimeout(function(){
                         loaderBox.classList.add("hide");
                     },resTime>0?resTime:0);
 
@@ -284,11 +284,8 @@ var pageSlider = function ($) {
 
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
-            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
-            //$(pages[index]).addClass("out").addClass("slide")
-            $(pages[nidx])[0].classList.remove("hide");
-            $(pages[nidx])[0].classList.adds("in slide");
-            $(pages[index])[0].classList.adds("out slide");
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
+            $(pages[index]).addClass("out").addClass("slide");
 
             index = nidx;
             document.title = lastModel.title;
@@ -299,13 +296,9 @@ var pageSlider = function ($) {
         _loadPage(url, data, function (res, title) {
 
 
-            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
-            //$(pages[index]).addClass("out").addClass("slide");
-            $(pages[nidx])[0].classList.remove("hide");
-            $(pages[nidx])[0].classList.adds("in slide");
-            $(pages[nidx]).html("");
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
+            $(pages[index]).addClass("out").addClass("slide");
 
-            $(pages[index])[0].classList.adds("out slide");
 
             $(pages[nidx]).html(res);
 
@@ -394,18 +387,9 @@ var pageSlider = function ($) {
         }
     }
 
-    function extend(){
-        DOMTokenList.prototype.adds = function(tokens) {
-            tokens.split(" ").forEach(function(token) {
-                this.add(token);
-            }.bind(this));
-            return this;
-        };
-    }
 
     function _init(container, url, hasScript) {
-        //test
-        extend();
+
         /**
          *容器初始化
          **/
