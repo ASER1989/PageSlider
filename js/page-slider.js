@@ -284,11 +284,15 @@ var pageSlider = function ($) {
 
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
-            $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("in");
+            $(pages[index]).addClass("out");
+
+            document.title = lastModel.title;
+
+            $(pages[nidx]).addClass("slide");
+            $(pages[index]).addClass("slide");
 
             index = nidx;
-            document.title = lastModel.title;
             _history(lastModel);
             return;
         }
@@ -296,15 +300,20 @@ var pageSlider = function ($) {
         _loadPage(url, data, function (res, title) {
 
 
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
-            $(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("in");
+            $(pages[index]).addClass("out");
+
+            document.title = title;
+
+            $(pages[nidx]).addClass("slide").html("");
+            $(pages[index]).addClass("slide");
 
 
             $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
             index = nidx;
-            document.title = title;
+
 
             if (hasScript)
                 _jsLoader(url, pages[nidx]);
@@ -328,11 +337,15 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).addClass("reverse").addClass("out");
+            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse");
+
+            document.title = model.title;
+
+            $(pages[index]).addClass("slide");
+            $(pages[nidx]).addClass("slide");
 
             index = nidx;
-            document.title = model.title;
 
             //if (!_modelEques(model,preModel) && model) {
             //    if (type.isBoolean(model.data)) {
