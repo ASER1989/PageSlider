@@ -320,6 +320,7 @@ var pageSlider = function ($) {
      * 并预加载返回页面的上一页
      * */
     function _goBack() {
+
         if (transLock) return;
 
         if (history.length > 1) {
@@ -334,28 +335,29 @@ var pageSlider = function ($) {
             index = nidx;
             document.title = model.title;
 
-            if (!_modelEques(model,preModel) && model) {
-                if (type.isBoolean(model.data)) {
-                    model.hasScript = model.data;
-                    model.data = null;
-                }
-
-                _loadPage(model.url, model.data, function (res) {
-
-                    $(pages[index]).html(res);
-                    _newPageEventBind($(pages[index]));
-
-                    if(model.hasScript)
-                        _jsLoader(model.url, pages[index]);
-                });
-            }
+            //if (!_modelEques(model,preModel) && model) {
+            //    if (type.isBoolean(model.data)) {
+            //        model.hasScript = model.data;
+            //        model.data = null;
+            //    }
+            //    console.log("===>>",model,preModel);
+            //    _loadPage(model.url, model.data, function (res) {
+            //
+            //        $(pages[index]).html(res);
+            //        _newPageEventBind($(pages[index]));
+            //
+            //        if(model.hasScript)
+            //            _jsLoader(model.url, pages[index]);
+            //    });
+            //}
 
             if(history.length>1){
-
                 var premodel =  history[history.length - 2];
                 var preidx = index == 0 ? 2 : index - 1;
                 loaderBox.isPre = true;
-                _preLoad(premodel,pages[preidx],function(){loaderBox.isPre=false;});
+                _preLoad(premodel,pages[preidx],function(){
+                    loaderBox.isPre=false;
+                });
             }
 
             return true
