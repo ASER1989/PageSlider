@@ -288,6 +288,7 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out");
 
             document.title = lastModel.title;
+            alert(1);
 
             $(pages[nidx]).addClass("slide");
             $(pages[index]).addClass("slide");
@@ -304,7 +305,7 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("out");
 
             document.title = title;
-
+            alert(1);
             $(pages[nidx]).addClass("slide").html("");
             $(pages[index]).addClass("slide");
 
@@ -341,7 +342,7 @@ var pageSlider = function ($) {
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse");
 
             document.title = model.title;
-
+            alert(1);
             $(pages[index]).addClass("slide");
             $(pages[nidx]).addClass("slide");
 
