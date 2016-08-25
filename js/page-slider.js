@@ -300,17 +300,17 @@ var pageSlider = function ($) {
 
         _loadPage(url, data, function (res, title) {
 
-            $(pages[nidx]).addClass("in").html(res);
+            $(pages[nidx]).addClass("in");
             $(pages[index]).addClass("out");
 
             document.title = title;
             $(pages[index]).offset = $(pages[index]).offset;
 
-            $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide").html("");
             $(pages[index]).addClass("slide");
 
 
-            //$(pages[nidx]).html(res);
+            $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
             index = nidx;
@@ -342,7 +342,7 @@ var pageSlider = function ($) {
             $(pages[nidx]).addClass("in reverse");
 
             document.title = model.title;
-            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
+            $(pages[index]).offset = $(pages[index]).offset;
 
             $(pages[index]).addClass("slide");
             $(pages[nidx]).removeClass("hide").addClass("slide");
