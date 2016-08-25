@@ -282,6 +282,7 @@ var pageSlider = function ($) {
 
             var ele =  $(pages[index])[0];
             setTimeout(function(){
+                alert(1);
                 ele.classList.adds("out slide");
             },0);
 
