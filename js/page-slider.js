@@ -162,7 +162,7 @@ var pageSlider = function ($) {
                     });
                     data = data.replace(/\<[^>]{1,}data-remove[^>]{0,}\>[^>]{1,}\>/g, "");
 
-                    var resTime =1500-((new Date()).getTime()-reqTime);
+                    var resTime =1000-((new Date()).getTime()-reqTime);
 
                     callback.call(null, data, title);
                     setTimeout(function(){
