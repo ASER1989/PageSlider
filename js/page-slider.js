@@ -87,7 +87,7 @@ var pageSlider = function ($) {
 
     }
 
-    function modelEques(model1,model2){
+    function _modelEques(model1,model2){
         if(model1==null || model2==null){
             return false;
         }
@@ -273,8 +273,12 @@ var pageSlider = function ($) {
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
             var nidx = index == 2 ? 0 : index + 1;
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
-            $(pages[index]).addClass("out").addClass("slide")
+            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide");
+            //$(pages[index]).addClass("out").addClass("slide")
+            $(pages[nidx])[0].classList.remove("hide")
+            $(pages[nidx])[0].classList.adds("in slide");
+            $(pages[index])[0].classList.adds("out slide")
+
             index = nidx;
             document.title = lastModel.title;
             _history(lastModel);
@@ -285,8 +289,15 @@ var pageSlider = function ($) {
 
             var nidx = index == 2 ? 0 : index + 1;
 
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
-            $(pages[index]).addClass("out").addClass("slide");
+
+            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("slide").html("");
+            //$(pages[index]).addClass("out").addClass("slide");
+            $(pages[nidx])[0].classList.remove("hide");
+            $(pages[nidx])[0].classList.adds("in slide");
+            $(pages[nidx]).html("");
+
+            $(pages[index])[0].classList.adds("out slide");
+
             $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
@@ -315,13 +326,17 @@ var pageSlider = function ($) {
 
             var nidx = index == 0 ? 2 : index - 1;
 
-            $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
-            $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
+            //$(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            //$(pages[index]).addClass("reverse").addClass("out").addClass("slide");
+
+            $(pages[nidx])[0].classList.remove("hide");
+            $(pages[nidx])[0].classList.adds("in reverse slide");
+            $(pages[index])[0].classList.adds("reverse out slide");
 
             index = nidx;
             document.title = model.title;
 
-            if (!modelEques(model,preModel) && model) {
+            if (!_modelEques(model,preModel) && model) {
                 if (type.isBoolean(model.data)) {
                     model.hasScript = model.data;
                     model.data = null;
@@ -373,7 +388,18 @@ var pageSlider = function ($) {
         }
     }
 
+    function extend(){
+        DOMTokenList.prototype.adds = function(tokens) {
+            tokens.split(" ").forEach(function(token) {
+                this.add(token);
+            }.bind(this));
+            return this;
+        };
+    }
+
     function _init(container, url, hasScript) {
+        //test
+        extend();
         /**
          *容器初始化
          **/
