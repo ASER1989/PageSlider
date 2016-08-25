@@ -19,7 +19,7 @@
 <script src="./js/require.js" data-main="./js/main.js?v=1.68"></script>
 <script type="text/javascript">
     function pageReady() {
-        require(['jquery', 'zoom', "pageSlider"], function ($, zoom, ps) {
+        require(['zepto', 'zoom', "pageSlider"], function ($, zoom, ps) {
             zoom.calc();
             ps.ready({
                 el: "#warp",
