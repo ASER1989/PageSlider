@@ -347,7 +347,7 @@ var pageSlider = function ($) {
             //强制重绘
             loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            alert(3);
+            //alert(3);
 
             $(pages[nidx]).removeClass("hide").addClass("slide");
             $(pages[index]).addClass("slide");
