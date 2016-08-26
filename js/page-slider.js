@@ -340,12 +340,14 @@ var pageSlider = function ($) {
             var nidx = index == 0 ? 2 : index - 1;
             $(pages[index]).addClass("slide");
             $(pages[nidx]).addClass("slide");
+            $(pages[index]).addClass("reverse out");
 
             document.title = model.title;
             //强制重绘
             loaderBox.offsetHeight=loaderBox.offsetHeight;
-            alert(1);
-            $(pages[index]).addClass("reverse out");
+
+            alert(2);
+
             $(pages[nidx]).removeClass("hide").addClass("reverse in");
 
             index = nidx;
