@@ -346,7 +346,7 @@ var pageSlider = function ($) {
             //强制重绘
             loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            alert(2);
+            //alert(2);
 
             $(pages[nidx]).removeClass("hide").addClass("reverse in");
 
