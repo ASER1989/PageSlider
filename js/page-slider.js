@@ -338,14 +338,15 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            //$(pages[index]).addClass("reverse out");
-            //$(pages[nidx]).addClass("reverse in");
+            $(pages[index]).addClass("slide");
+            $(pages[nidx]).addClass("slide");
 
             document.title = model.title;
-            //loaderBox.offsetHeight=loaderBox.offsetHeight;
+            //强制重绘
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            $(pages[index]).addClass("slide reverse out");
-            $(pages[nidx]).removeClass("hide").addClass("slide reverse in");
+            $(pages[index]).addClass("reverse out");
+            $(pages[nidx]).removeClass("hide").addClass("reverse in");
 
             index = nidx;
 
