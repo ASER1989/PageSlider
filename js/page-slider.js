@@ -284,14 +284,14 @@ var pageSlider = function ($) {
 
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
-            $(pages[nidx]).addClass("in");
-            $(pages[index]).addClass("out");
+            //$(pages[nidx]).addClass("in");
+            //$(pages[index]).addClass("out");
 
             document.title = lastModel.title;
-            loaderBox.offsetHeight=loaderBox.offsetHeight;
+            //loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            $(pages[nidx]).removeClass("hide").addClass("slide");
-            $(pages[index]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide in");
+            $(pages[index]).addClass("slide out");
 
             index = nidx;
             _history(lastModel);
@@ -300,14 +300,14 @@ var pageSlider = function ($) {
 
         _loadPage(url, data, function (res, title) {
 
-            $(pages[nidx]).addClass("in");
-            $(pages[index]).addClass("out");
+            //$(pages[nidx]).addClass("in");
+            //$(pages[index]).addClass("out");
 
             document.title = title;
-            loaderBox.offsetHeight=loaderBox.offsetHeight;
+            //loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            $(pages[nidx]).removeClass("hide").addClass("slide").html("");
-            $(pages[index]).addClass("slide");
+            $(pages[nidx]).removeClass("hide").addClass("slide in").html("");
+            $(pages[index]).addClass("slide out");
 
 
             $(pages[nidx]).html(res);
@@ -338,14 +338,14 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            $(pages[index]).addClass("reverse out");
-            $(pages[nidx]).addClass("in reverse");
+            //$(pages[index]).addClass("reverse out");
+            //$(pages[nidx]).addClass("reverse in");
 
             document.title = model.title;
-            loaderBox.offsetHeight=loaderBox.offsetHeight;
+            //loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            $(pages[index]).addClass("slide");
-            $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[index]).addClass("slide reverse out");
+            $(pages[nidx]).removeClass("hide").addClass("slide reverse in");
 
             index = nidx;
 
