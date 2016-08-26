@@ -285,8 +285,8 @@ var pageSlider = function ($) {
         if (lastModel && lastModel.url == url && lastModel.data == data && lastModel.hasScript == hasScript) {
 
             document.title = lastModel.title;
-
             $(pages[nidx]).removeClass("hide").addClass("slide in");
+            //强制重绘 reflow
             loaderBox.offsetHeight=loaderBox.offsetHeight;
             $(pages[index]).addClass("slide out");
 
@@ -299,6 +299,7 @@ var pageSlider = function ($) {
 
             document.title = title;
             $(pages[nidx]).removeClass("hide").addClass("slide in").html("");
+            //强制重绘 reflow
             loaderBox.offsetHeight=loaderBox.offsetHeight;
             $(pages[index]).addClass("slide out");
 
@@ -334,7 +335,7 @@ var pageSlider = function ($) {
 
             $(pages[index]).addClass("reverse out");
             $(pages[nidx]).removeClass("hide").addClass("slide reverse in");
-            //强制重绘
+            //强制重绘 reflow
             loaderBox.offsetHeight=loaderBox.offsetHeight;
             $(pages[index]).addClass("slide");
 
@@ -410,7 +411,6 @@ var pageSlider = function ($) {
             document.title = title;
 
             if (hasScript) {
-                //_runJs(url);
                 _jsLoader(url, pages[index]);
             }
 
@@ -452,4 +452,13 @@ var pageSlider = function ($) {
  * 框架特点说明:
  * 前进时,若加载对象等同于前一个页面对象,则不重新加载页面
  * 后退时,自动预加载一页
+ *
+ * *****************************************************
+ * 最新bug修复说明:
+ * 2016.8.26--由于转场一次对dom进行样式添加,浏览器没有间隔渲染,所以会出现两个页面只有一个页面有动画的bug,这时添加了强制回流(先执行上面的js代码)的代码,
+ * 强制回流的属性包括:offsetTop, offsetLeft, offsetWidth, offsetHeight ,scrollTop, scrollLeft, scrollWidth,
+ * scrollHeight,clientTop, clientLeft, clientWidth, clientHeight
+ *
+ * *****************************************************
+ * 备注: 当前代码可优化度还很高!!!
  * */
