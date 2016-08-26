@@ -290,8 +290,11 @@ var pageSlider = function ($) {
             document.title = lastModel.title;
             //loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            $(pages[nidx]).removeClass("hide").addClass("slide in");
+            $(pages[nidx]).addClass("slide in");
             $(pages[index]).addClass("slide out");
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
+
+            $(pages[nidx]).removeClass("hide");
 
             index = nidx;
             _history(lastModel);
@@ -300,21 +303,18 @@ var pageSlider = function ($) {
 
         _loadPage(url, data, function (res, title) {
 
-            //$(pages[nidx]).addClass("in");
-            //$(pages[index]).addClass("out");
-
-            document.title = title;
-            //loaderBox.offsetHeight=loaderBox.offsetHeight;
-
-            $(pages[nidx]).removeClass("hide").addClass("slide in").html("");
+            $(pages[nidx]).addClass("slide in").html("");
+            loaderBox.offsetHeight=loaderBox.offsetHeight;
+            $(pages[nidx]).removeClass("hide");
             $(pages[index]).addClass("slide out");
 
 
             $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
-            index = nidx;
 
+            index = nidx;
+            document.title = title;
 
             if (hasScript)
                 _jsLoader(url, pages[nidx]);
@@ -338,19 +338,15 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            //$(pages[index]).addClass("slide");
-            //$(pages[nidx]).addClass("slide");
+
             $(pages[index]).addClass("reverse out");
-            $(pages[nidx]).addClass("reverse in");
-            $(pages[nidx]).removeClass("hide").addClass("slide");
-            document.title = model.title;
+            $(pages[nidx]).addClass("slide reverse in");
             //强制重绘
             loaderBox.offsetHeight=loaderBox.offsetHeight;
-
-            //alert(3);
-
-
+            $(pages[nidx]).removeClass("hide");
             $(pages[index]).addClass("slide");
+
+            document.title = model.title;
             index = nidx;
 
             //if (!_modelEques(model,preModel) && model) {
