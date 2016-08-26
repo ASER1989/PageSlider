@@ -338,18 +338,19 @@ var pageSlider = function ($) {
             var model = history[history.length - 1];
 
             var nidx = index == 0 ? 2 : index - 1;
-            $(pages[index]).addClass("slide");
-            $(pages[nidx]).addClass("slide");
+            //$(pages[index]).addClass("slide");
+            //$(pages[nidx]).addClass("slide");
             $(pages[index]).addClass("reverse out");
+            $(pages[nidx]).addClass("reverse in");
 
             document.title = model.title;
             //强制重绘
             loaderBox.offsetHeight=loaderBox.offsetHeight;
 
-            //alert(2);
+            alert(3);
 
-            $(pages[nidx]).removeClass("hide").addClass("reverse in");
-
+            $(pages[nidx]).removeClass("hide").addClass("slide");
+            $(pages[index]).addClass("slide");
             index = nidx;
 
             //if (!_modelEques(model,preModel) && model) {
