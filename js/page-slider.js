@@ -25,13 +25,13 @@ var pageSlider = function ($) {
     var type = new function (){ return Object.prototype.toString;};
 
     type.isFunction = function (obj) {
-        return type.call(obj) === "[object Function]";
+        return this.call(obj) === "[object Function]";
     };
     type.isString = function (obj) {
-        return type.call(obj) === "[object String]";
+        return this.call(obj) === "[object String]";
     };
     type.isBoolean = function (obj) {
-        return type.call(obj) === "[object Boolean]";
+        return this.call(obj) === "[object Boolean]";
     };
 
 

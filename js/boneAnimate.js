@@ -35,8 +35,11 @@
         if( isReady &&!isLock){
             isLock =true;
 
-            $(pages[index]).addClass("out").addClass("slide");
+
+
             $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
+            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
+            $(pages[index]).addClass("out").addClass("slide");
 
 
             index=nidx;
@@ -50,6 +53,7 @@
         if( isReady && !isLock){
             isLock = true;
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
             $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             index=nidx;
             bar();
