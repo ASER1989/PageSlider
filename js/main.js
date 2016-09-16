@@ -11,6 +11,7 @@
             zepto:"zepto",
             underscore:"underscore",
             zoom:"zoom",
+            ImgLoader:"ImgLoader.js",
             boneAnimate:"boneAnimate.js?v="+version,
             pageSlider:"page-slider.js?v="+version
         },

@@ -62,6 +62,7 @@
     </style>
     <link data-remove="true" rel="stylesheet" href="./css/index.css?v=1.001"/>
     <link data-remove="true" rel="stylesheet" href="./css/page-slider.css"/>
+
 </head>
 <body>
 <div class="top">
@@ -83,7 +84,31 @@
     </div>
 </div>
 <div>
-
+<img src="./res/bg-1.jpg" />
+<img src="./res/bg-2.jpg" />
+<img src="./res/bg-3.jpg" />
 </div>
 </body>
+<script src="./js/ImgLoader.js"></script>
+<!--<script src="./js/require.js" data-main="./js/main.js"></script>-->
+
+<!--<script type="text/javascript" src="./page_5.js"></script>-->
+
+<script type="text/javascript">
+function ready(){
+    var imgl = new ImgLoader();
+    function onload(i,v,status){
+        console.log(i,v,status);
+
+    }
+
+    imgl.watch(onload);
+    imgl.preload(["./res/bg-1.jpg" ,"./res/bg-2.jpg","./res/bg-5.jpg"],{onload:onload});
+
+
+}
+
+
+</script>
+
 </html>

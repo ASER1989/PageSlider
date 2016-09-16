@@ -236,9 +236,10 @@ var pageSlider = function ($) {
         if (type.call(url) == "[object Object]") {
             hasScript = url.hasScript;
             data = url.data;
-            url = url.url;
             title = url.title;
+            url = url.url;
         }
+
         lastModel = {url: url, data: data, hasScript: hasScript, title: title};
         history.push({url: url, data: data, hasScript: hasScript, title: title});
     }
@@ -291,6 +292,7 @@ var pageSlider = function ($) {
             $(pages[index]).addClass("slide out");
 
             index = nidx;
+
             _history(lastModel);
             return;
         }
@@ -437,9 +439,11 @@ var pageSlider = function ($) {
 
         },
         transToPage: _transToPage,
+        go:_transToPage,
         goBack: _goBack
     }
 }
+
 /**
  * html节点属性说明
  * *****************************************************
