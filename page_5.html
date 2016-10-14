@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>滑动广告</title>
     <style>
 
-        .bg_01{
+        .bg_01 {
             background: url("./res/bg-1.jpg") center no-repeat;
             background-size: 100% auto;
         }
-        .bg_02{
+
+        .bg_02 {
             background: url("./res/bg-2.jpg") center no-repeat;
             background-size: 100% auto;
         }
-        .bg_03{
+
+        .bg_03 {
             background: url("./res/bg-3.jpg") center no-repeat;
             background-size: 100% auto;
         }
 
-        #_page5{
+        #_page5 {
             position: relative;
             height: 100%;
             overflow: hidden;
@@ -66,7 +69,7 @@
 </head>
 <body>
 <div class="top">
-    <div class="back" style="text-align: left" data-page="goback()"> 返回 </div>
+    <div class="back" style="text-align: left" data-page="goback()"> 返回</div>
 </div>
 <div id="_page5">
     <div class="imgLR-bt leftL">上一页</div>
@@ -86,24 +89,25 @@
 <div>
 </div>
 </body>
-<script src="./js/ImgLoader.js"></script>
+
 <!--<script src="./js/require.js" data-main="./js/main.js"></script>-->
 
 <!--<script type="text/javascript" src="./page_5.js"></script>-->
-
+<script src="./js/ImgLoader.js"></script>
 <script type="text/javascript">
-function ready(){
-    var imgl = new ImgLoader();
-    function onload(i,v,status){
-        console.log(i,v,status);
+    void function pageInit() {
+        var imgl = new ImgLoader();
 
-    }
+        function onload(i, v, status) {
+            console.log(i, v, status);
 
-    imgl.watch(onload);
-    imgl.preload(["./res/bg-1.jpg" ,"./res/bg-2.jpg","./res/bg-5.jpg"],{onload:onload});
+        }
+
+        imgl.watch(onload);
+        imgl.preload(["./res/bg-1.jpg", "./res/bg-2.jpg", "./res/bg-3.jpg"], {onload: onload});
 
 
-}
+    }();
 
 
 </script>
