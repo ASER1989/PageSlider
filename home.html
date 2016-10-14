@@ -1,18 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>page1</title>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/page-slider.css?v=1.77"/>
+    <style type="text/css">
+        .idx-sec{
+            padding-top: 2rem;
+        }
+        .idx-title {
+            width: 83%;
+            height: 2rem;
+            line-height: 2rem;
+            padding-left: 0.5rem;
+            color: #FFFFFF;
+            /*background: url("res/bar-title.png") no-repeat;*/
+            /*background-size: 100%;*/
+            background-color: #0c873a;
+            position: absolute;
+            top: 3rem;
+            left: 5%;
+            border-bottom-right-radius: 3px;
+            border-top-right-radius: 3px;
+        }
 
+        .idx-warp {
+            width: 90%;
+            margin: auto;
+
+        }
+
+        .idx-content {
+            padding-top: 4rem;
+            margin-left: 2px;
+            border: solid 1px #d6d6d6;
+            box-sizing: border-box;
+            min-height: 80%;
+        }
+    </style>
 </head>
 <body>
-<div>
-    点击查看以下链接查看相关demo
-    <div class="link" data-page="./page_1.html">page1</div>
-    <div class="link" data-page="./page_2.html">page1</div>
-    <div class="link" data-page="./page_3.html">page1</div>
-    <div class="link" data-page="./page_5.html">page1</div>
+<div class="idx-sec">
+    <div class="idx-title">
+        点击查看以下链接查看相关demo
+    </div>
+    <div class="idx-warp">
+        <div class="idx-content">
+            <div class="link" data-page="./page_1.html">page1</div>
+            <div class="link" data-page="./page_2.html">page2</div>
+            <div class="link" data-page="./page_3.html">page3</div>
+            <div class="link" data-page="./page_5.html">page4</div>
+        </div>
+
+    </div>
+
 </div>
 </body>
 </html>
