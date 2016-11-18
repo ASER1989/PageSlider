@@ -1,7 +1,11 @@
 /**
  * Created by aser on 16/8/2.
  */
-define(["zepto"],function($){
+//define && define(["zepto"],function($){
+//    return zoom($);
+//})
+
+var zoom = function($){
 
     function calc( callback){
         callback = typeof callback=="function"?callback:function(){};
@@ -29,4 +33,4 @@ define(["zepto"],function($){
             }
         }
     }
-})
+}

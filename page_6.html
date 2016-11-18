@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>page1</title>
+    <link rel="stylesheet" href="./css/animate.css">
     <style type="text/css">
-        div[data-move]{
-            width:100%;
+        div[data-move] {
+            width: 100%;
             height: 60px;
-            border:solid 1px lightslategray;
+            border: solid 1px lightslategray;
             transition: all 1s;
         }
-        .red{
+
+        .red {
             background-color: red;
         }
-        .blue{
-            background-color:blue ;
-        }
-        .gray{
-            background-color: grey;
-        }
-        .green{
-            background-color: green;
-        }
-        .transLeft{
-            transform:translateX(-110%);
+
+        .blue {
+            background-color: blue;
         }
 
-        .transRights{
-            transform:translateX(110%);
+        .gray {
+            background-color: grey;
         }
-        .hidden{
+
+        .green {
+            background-color: green;
+        }
+
+        .transLeft {
+            transform: translateX(-110%);
+        }
+
+        .transRights {
+            transform: translateX(110%);
+        }
+
+        .hidden {
             opacity: 0;
+        }
+        .pd-top{
+            padding-top: 2.3rem;
         }
     </style>
 
@@ -40,22 +51,26 @@
 <div>
 
     <div class="top">
-        <div class="back" data-page="goback()"> 返回 </div>
+        <div class="back" data-page="goback()"> 返回</div>
     </div>
-   <div>
-       <div class="red transLeft" data-move="true" data-delcls="transLeft" data-delay="1000">1</div>
-       <div class="blue transRights" data-move="true" data-delcls="transRights" data-delay="2000">2</div>
-       <div class="green hidden" data-move="true" data-delay="3000" data-delcls="hidden">3</div>
-       <div class="gray" data-move="true">4</div>
-   </div>
+    <div id="_page6_content" class="pd-top hidden">
+        <div class="red transLeft" data-move="true" data-delcls="transLeft" data-delay="1000">1</div>
+        <div class="blue transRights" data-move="true" data-delcls="transRights" data-delay="2000">2</div>
+        <div class="green hidden" data-move="true" data-delay="3000" data-delcls="hidden">3</div>
+        <div class="gray animated hidden" data-move="true" data-delay="4000" data-delcls="hidden" data-cls="bounceIn">
+            4
+        </div>
+    </div>
 
 </div>
-<script type="text/javascript" src="js/me.require.js"></script>
+<!--<script type="text/javascript" src="js/me.require.js"></script>-->
 <script type="text/javascript">
-    require("js/page-move.js",function(){
-
-        (new  move()).start();
+    require("js/page-move.js", function () {
+        $("#_page6_content").removeClass("hidden");
+        (new move()).start();
     });
+
+
 </script>
 </body>
 </html>

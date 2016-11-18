@@ -2,9 +2,9 @@
  * Created by aser on 16/8/5.
  */
 ;'use strict';
-define(['zepto'], function ($) {
-    return pageSlider($)
-});
+//define(['zepto'], function ($) {
+//    return pageSlider($)
+//});
 
 
 var pageSlider = function ($) {
@@ -174,7 +174,6 @@ var pageSlider = function ($) {
                     setTimeout(function () {
                         loaderBox.classList.add("hide");
                     }, resTime > 0 ? resTime : 0);
-
                 }
             }
         });

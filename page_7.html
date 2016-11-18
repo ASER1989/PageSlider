@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>page7</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <style type="text/css">
+        div[data-move] {
+            border: solid 1px lightslategray;
+            transition: all 1s;
+        }
+
+        .item-1 {
+            margin-top: 4.5rem;
+            width: 16rem;
+            height: 16rem;
+            transform: rotateZ(45deg) translateX(-9rem);
+            transform-origin: left;
+            text-align: right;
+        }
+
+        .item-1-hide{
+            transform: rotateZ(45deg) translate3d(-18rem,7rem,0) !important;
+        }
+        .item-1-content{
+            transform: rotateZ(-45deg) translateX(-3rem);
+            width: 1rem;
+            display: inline-block;
+        }
+
+        .item-2 {
+            width: 16rem;
+            height: 16rem;
+            transform: rotateZ(45deg) translate3d(6rem,-8rem,0);
+            transform-origin: right;
+        }
+        .item-2-hide{
+            transform: rotateZ(45deg) translate3d(18rem,-20rem,0) !important
+        }
+        .blue {
+            background-color: blue;
+        }
+
+        .gray {
+            background-color: grey;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .transLeft {
+            transform: translateX(-110%);
+        }
+
+        .transRights {
+            transform: translateX(110%);
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+        .pd-top{
+            padding-top: 2.3rem;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+
+    <div class="top">
+        <div class="back" data-page="goback()"> 返回</div>
+    </div>
+    <div id="_page7_content" class="pd-top">
+        <div class="item-1 item-1-hide" data-move="true" data-delcls="item-1-hide" data-delay="1000">
+            <div class="item-1-content">
+                左边内容
+            </div>
+        </div>
+        <div class="item-2 item-2-hide" data-move="true" data-delcls="item-2-hide" data-delay="1500"></div>
+
+
+    </div>
+
+</div>
+<script type="text/javascript" src="js/me.require.js"></script>
+<script type="text/javascript">
+    require("js/page-move.js", function () {
+         $("#_page6_content").removeClass("hidden");
+        (new move()).start();
+    });
+
+
+</script>
+</body>
+</html>
