@@ -10,6 +10,7 @@
         div[data-move] {
             border: solid 1px lightslategray;
             transition: all 1s;
+            -webkit-transition: all 1s;
         }
 
         .item-1 {
@@ -17,14 +18,18 @@
             width: 16rem;
             height: 16rem;
             transform: rotateZ(45deg) translateX(-9rem);
+            -webkit-transform: rotateZ(45deg) translateX(-9rem);
             transform-origin: left;
+            -webkit-transform-origin: left;
             text-align: right;
         }
 
         .item-1-hide{
             transform: rotateZ(45deg) translate3d(-18rem,7rem,0) !important;
+            -webkit-transform: rotateZ(45deg) translate3d(-18rem,7rem,0) !important;
         }
         .item-1-content{
+            -webkit-transform: rotateZ(-45deg) translateX(-3rem);
             transform: rotateZ(-45deg) translateX(-3rem);
             width: 1rem;
             display: inline-block;
@@ -34,10 +39,13 @@
             width: 16rem;
             height: 16rem;
             transform: rotateZ(45deg) translate3d(6rem,-8rem,0);
+            -webkit-transform: rotateZ(45deg) translate3d(6rem,-8rem,0);
             transform-origin: right;
+            -webkit-transform-origin: right;
         }
         .item-2-hide{
-            transform: rotateZ(45deg) translate3d(18rem,-20rem,0) !important
+            transform: rotateZ(45deg) translate3d(18rem,-20rem,0) !important;
+            -webkit-transform: rotateZ(45deg) translate3d(18rem,-20rem,0) !important;
         }
         .blue {
             background-color: blue;
@@ -53,10 +61,12 @@
 
         .transLeft {
             transform: translateX(-110%);
+            -webkit-transform: translateX(-110%);
         }
 
         .transRights {
             transform: translateX(110%);
+            -webkit-transform: translateX(110%);
         }
 
         .hidden {
@@ -65,6 +75,9 @@
         .pd-top{
             padding-top: 2.3rem;
             box-sizing: border-box;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            overflow: hidden;
         }
     </style>
 
