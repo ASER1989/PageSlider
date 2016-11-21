@@ -17,16 +17,29 @@ img{
 .top >div{
     width:50%;
     padding: 0 1rem;
+    text-align: left;
 }
 .top >div:last-child{
     text-align: right;
 }
 
+.back:before{
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.815rem;
+    left: 0.5rem;
+    border-top: solid 0.105rem #ffffff;
+    border-left: solid 0.105rem #ffffff;
+    transform: rotateZ(-45deg);
+}
+
 .imgLR-bt{
     position: absolute;
-    height:4.35rem;
+    height:4.45rem;
     top:39%;
-    width: 1.4rem;
+    width: 1.5rem;
     border:solid 1px gray;
     z-index: 99;
     background: rgba(146, 146, 146, 0.56);
@@ -37,13 +50,36 @@ img{
 
 }
 .leftL{
-    left: 0;
+    left: -1px;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
 
 }
 .rigthL{
-    right: 0;
+    right: -1px;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
+}
+
+.content{
+    text-indent:2em;
+    letter-spacing:1px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 0.55rem;
+    text-align:justify;
+}
+
+.link
+{
+    color: #0909a2;
+    padding-left: 3px;
+    font-weight: 600;
+}
+.home{
+    width:1.8rem;
+    margin-top: 0.25rem;
+}
+.banner-img{
+    min-height: 20rem;
 }

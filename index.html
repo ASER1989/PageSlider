@@ -5,27 +5,35 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="./css/index.css"/>
-    <link rel="stylesheet" href="./css/page-slider.css"/>
+    <link rel="stylesheet" href="./css/page-slider.css?v=1.77"/>
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
 <div id="warp" class="page-box">
-
 </div>
+
 </body>
 </html>
-<script src="./js/require.js" data-main="./js/main.js?v=1.35"></script>
+<script src="./js/me.require.js"></script>
+
 <script type="text/javascript">
-    function pageReady() {
-        require(['zepto', 'zoom', "pageSlider"], function ($, zoom, ps) {
-            zoom.calc();
-            ps.ready({
-                el: "#warp",
-                url: "./page_1.html",
-                onPageStart:function(){
-                },
-                onPageEnd:function(){
-                }
-            });
+
+    require(['./js/zepto.js', './js/zoom.js', './js/page-slider.js','./js/ImgLoader.js'], function () {
+        zoom($).calc();
+        var ps = pageSlider($);
+        ps.ready({
+            el: "#warp",
+//                url: "./page_1.html",
+            url: "./home.html",
+            loader: true,
+            onPageStart: function () {
+            },
+            onPageEnd: function () {
+            }
         });
-    }
+
+        ps.preLoad(["./page_1.html", "./page_2.html", "./page_3.html"]);
+    });
 </script>

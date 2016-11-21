@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>page1</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <style type="text/css">
+        div[data-move] {
+            width: 100%;
+            height: 60px;
+            border: solid 1px lightslategray;
+            transition: all 1s !important;
+            -webkit-transition: all 1s !important;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .gray {
+            background-color: grey;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .transLeft {
+            transform: translate3d(-100%,0,0);
+            -webkit-transform: translate3d(-100%,0,0);
+        }
+
+        .transRights {
+            transform: translate3d(100%,0,0);
+            -webkit-transform: translate3d(100%,0,0);
+        }
+
+        .hidden {
+            opacity: 0;
+            -webkit-opacity:0;
+        }
+        .pd-top{
+            padding-top: 2.3rem;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+
+    <div class="top">
+        <div class="back" data-page="goback()"> 返回</div><div></div>
+    </div>
+    <div id="_page6_content" class="pd-top hidden">
+        <div class="red transLeft" data-move="true" data-delcls="transLeft" data-delay="1000">1</div>
+        <div class="blue transRights" data-move="true" data-delcls="transRights" data-delay="2000">2</div>
+        <div class="green hidden" data-move="true" data-delay="3000" data-delcls="hidden">3</div>
+        <div class="gray animated hidden" data-move="true" data-delay="4000" data-delcls="hidden" data-cls="bounceIn">
+            4
+        </div>
+    </div>
+
+</div>
+<!--<script type="text/javascript" src="js/me.require.js"></script>-->
+<script type="text/javascript">
+    require("js/page-move.js", function () {
+        $("#_page6_content").removeClass("hidden");
+        (new move()).start();
+    });
+
+
+</script>
+</body>
+</html>

@@ -2,8 +2,8 @@
  * Created by aser on 16/8/4.
  */
 ;define(["zepto"],function($){
-    var pages,index,isReady=false,isLock=false;
-    function init(slides){
+    var pages,index,isReady=false,isLock=false,baritems=[];
+    function init(slides,barItems){
 
         if(slides.length>0 ){
             pages = slides;
@@ -11,6 +11,7 @@
             index=0;
             eventListener(pages);
         }
+        baritems = barItems||baritems;
     }
     function eventListener(pages){
         var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
@@ -34,12 +35,15 @@
         if( isReady &&!isLock){
             isLock =true;
 
-            $(pages[index]).addClass("out").addClass("slide");
+
+
             $(pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
+            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
+            $(pages[index]).addClass("out").addClass("slide");
 
 
             index=nidx;
-
+            bar();
         }
 
     }
@@ -49,9 +53,17 @@
         if( isReady && !isLock){
             isLock = true;
             $(pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
+            $(pages[index]).offsetWidth = $(pages[index]).offsetWidth;
             $(pages[index]).addClass("reverse").addClass("out").addClass("slide");
             index=nidx;
+            bar();
         }
+    }
+    function bar(){
+        if(Object.prototype.toString.call(baritems)=="[object Array]" && baritems.length>0){
+            baritems.removeClass("hover").eq(index).addClass("hover");
+        }
+
     }
 
     return {

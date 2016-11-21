@@ -3,6 +3,7 @@
  */
 
 
+    var version = "1.87";
     require.config({
         //bathUrl:"../../",
         paths:{
@@ -10,8 +11,9 @@
             zepto:"zepto",
             underscore:"underscore",
             zoom:"zoom",
-            boneAnimate:"boneAnimate.js?v=1.136",
-            pageSlider:"page-slider.js?v=1.36"
+            ImgLoader:"ImgLoader.js",
+            boneAnimate:"boneAnimate.js?v="+version,
+            pageSlider:"page-slider.js?v="+version
         },
         shim: {
 
