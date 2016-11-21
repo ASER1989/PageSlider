@@ -13,7 +13,10 @@ var pageSlider = function ($) {
       history = [],
       lastModel = null,
       preModel = null,
-      transLock = false,
+      transLock = false, //转场锁定
+      rawUrl = new String(window.location).replace(/#[^#]+/, ""), //页面原始url
+      hashLock = false, //hashchange事件触发锁
+      isHistoryBack = false,
       loaderBox = document.createElement("div");
     loaderBox.isPre = false;
 
@@ -180,26 +183,6 @@ var pageSlider = function ($) {
         });
     }
 
-    /**
-     * 加载页面js(已过时)
-     * 并执行被加载文件的ready函数
-     * 此处约定被加载文件与页面同名,且包含ready初始化函数,否则可能无法被执行
-     * */
-    function _runJs(url) {
-        //return
-        try {
-            var jsname = url.replace('.html', '.js');
-
-            require([jsname], function (pagejs) {
-                pagejs.ready();
-            }, function () {
-                alert("error")
-            });
-        } catch (e) {
-
-        }
-
-    }
 
     /**
      * 加载js文件,并创建一个随机函数名的函数
@@ -300,6 +283,7 @@ var pageSlider = function ($) {
             index = nidx;
 
             _history(lastModel);
+            _historyHandle(_makeHash(url));
             return;
         }
 
@@ -322,6 +306,7 @@ var pageSlider = function ($) {
                 _jsLoader(url, pages[nidx]);
 
             _history(url, data, hasScript, title);
+            _historyHandle(_makeHash(url));
         });
 
 
@@ -358,11 +343,39 @@ var pageSlider = function ($) {
                     loaderBox.isPre = false;
                 });
             }
-
+            if (!isHistoryBack) {
+                window.history.back();
+            }
+            isHistoryBack = false;
+            hashLock = true;
             return true
         }
         return false
 
+    }
+
+    function _makeHash(url) {
+        var htmlname = url.toLowerCase().match(/[^\/]+\.html/);
+        var res = (htmlname == null || htmlname.length == 0 || htmlname[0] == null) ? (+new Date()) : htmlname[0].replace(".html", "");
+        return res;
+    }
+
+    function _historyHandle(hash) {
+        hashLock = true;
+        window.location = rawUrl + "#" + hash;
+
+    }
+
+    function _hashEventListener() {
+        window.onhashchange = function () {
+
+            if(!hashLock){
+                isHistoryBack=true;
+                _goBack();
+                //return;
+            }
+            hashLock = false ;
+        }
     }
 
     /**
@@ -425,6 +438,7 @@ var pageSlider = function ($) {
             _history(url, null, hasScript, title);
         });
 
+        _hashEventListener();
 
     }
 
