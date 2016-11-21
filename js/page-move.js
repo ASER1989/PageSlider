@@ -49,14 +49,14 @@ var move = function () {
          * 获取属性值
          * @n string
          * **/
-        HTMLDivElement.prototype.attr = function (n) {
+        HTMLElement.prototype.attr = function (n) {
             return this.getAttribute(n);
         }
         /**
          * 添加样式
          * @n string||array
          * **/
-        HTMLDivElement.prototype.addClass = function (n) {
+        HTMLElement.prototype.addClass = function (n) {
             var el = this;
             var ns = n.split(",");
             type.isArray(ns) ? (void function () {
@@ -72,7 +72,7 @@ var move = function () {
          * 移除样式
          * @n string||array
          * **/
-        HTMLDivElement.prototype.removeClass = function (n) {
+        HTMLElement.prototype.removeClass = function (n) {
             var el = this;
             var ns = n.split(",");
             if (type.isArray(ns)) {
@@ -83,6 +83,17 @@ var move = function () {
                 el.classList.remove(i);
             }
             return el;
+        }
+
+        NodeList.prototype.forEach=Array.prototype.forEach=function(fn){
+            var callback=function(obj,item,i){
+                var res = fn.call(obj,item,i);
+                return res==null?true:res;
+            }
+            for(var i =0;i<this.length && callback(this[i],this[i],i);i++){
+
+
+            }
         }
         return $;
     }

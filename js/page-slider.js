@@ -161,6 +161,7 @@ var pageSlider = function ($) {
             success: function (data) {
                 if (type.isFunction(callback)) {
                     var title = "";
+                    data = data.replace(/\<[^>]DOCTYPE [^>]+\>/g, "");
                     data = data.replace(/\<meta [^>]+\>/g, "");
                     data = data.replace(/\<title\>[^<]{0,}\<\/title\>/, function (matches) {
                         title = matches.replace("<title>", "").replace("</title>", "");
