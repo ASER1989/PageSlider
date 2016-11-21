@@ -6,6 +6,10 @@
     <title>page7</title>
     <link rel="stylesheet" href="./css/animate.css">
     <style type="text/css">
+        .page-body{
+            background: url("./res/page7-bg.jpg") no-repeat 0 0;
+            background-size: 100%;
+        }
         div[data-move] {
             border: solid 1px lightslategray;
             transition: all 1s;
@@ -21,6 +25,7 @@
             transform-origin: left;
             -webkit-transform-origin: left;
             text-align: right;
+            background: rgba(0, 136, 90, 0.45);
         }
 
         .item-1-hide{
@@ -41,6 +46,7 @@
             -webkit-transform: rotateZ(45deg) translate3d(6rem,-8rem,0);
             transform-origin: right;
             -webkit-transform-origin: right;
+            background: rgba(115, 167, 6, 0.39);
         }
         .item-2-hide{
             transform: rotateZ(45deg) translate3d(18rem,-20rem,0) !important;
@@ -82,9 +88,9 @@
 
 </head>
 <body>
-<div>
+<div class="page-body">
 
-    <div class="top">
+    <div class="top hidden">
         <div class="back" data-page="goback()"> 返回</div><div></div>
     </div>
     <div id="_page7_content" class="pd-top">
