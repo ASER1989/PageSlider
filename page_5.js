@@ -4,11 +4,12 @@
 
 function ready() {
 
-    require(['zepto','boneAnimate'], function ($,QR) {
+    require(['./js/zepto.js', './js/boneAnimate.js'], function () {
 
 
         /*================Events===================*/
 
+        var QR = new boneAnimate($);
         QR.init($("#_page5").find('.page'), $(".bar-box").find(".bar-item"));
         $(".leftL").on("click", function () {
 

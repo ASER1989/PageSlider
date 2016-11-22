@@ -1,7 +1,8 @@
 /**
  * Created by aser on 16/8/4.
  */
-;define(["zepto"],function($){
+//;define(["zepto"],
+ var boneAnimate= function($){
     var pages,index,isReady=false,isLock=false,baritems=[];
     function init(slides,barItems){
 
@@ -72,4 +73,5 @@
         perv:perv
     }
 
-})
+}
+//)

@@ -371,7 +371,7 @@ var pageSlider = function ($) {
 
             if (!hashLock) {
                 isHistoryBack = true;
-                if (history.length > 0 && window.location.hash == "#" + _makeHash(history[history.length-1].url))
+                //if (history.length > 0 && window.location.hash == "#" + _makeHash(history[history.length-1].url))
                     _goBack();
                 //return;
             }
