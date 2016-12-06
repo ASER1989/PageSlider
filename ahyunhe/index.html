@@ -39,19 +39,16 @@
     require(['../js/zepto.js', '../js/zoom.js', '../js/page-single.js', '../js/ImgLoader.js','../js/event-swiper.js'],
             function () {
 
-                new eventSwiper({
-                    obj: $("#warp"),
+
+                zoom($).calc();
+                var warp = $("#warp");
+                slider = new pageSingle({
+                    warp: warp,
+                    slides: warp.find(".page"),
                     onSwipe:function(e){
                         console.log(this);
                     }
                 });
-//        $("#warp").on("swipeLeft",function(e){console.log(1);})
-//        zoom($).calc();
-//        var warp = $("#warp");
-//        slider = new pageSingle({
-//            warp: warp,
-//            slides: warp.find(".page")
-//        });
 
     });
 </script>

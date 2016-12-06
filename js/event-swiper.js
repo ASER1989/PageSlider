@@ -56,10 +56,10 @@ var eventSwiper = function (opt) {
     };
 
     function touchEnd(e) {
+        _swiper.swipeEnd.call(_eventer);
         _eventer.slidswitch = 1;
         _eventer.start = 0;
         _eventer.offset = 0;
-        _swiper.swipeEnd.call(_eventer);
     }
 
     function touchMove(e) {
