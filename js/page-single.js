@@ -31,6 +31,10 @@ var pageSingle = function (opt) {
 
         }
         _single.baritems = barItems || _single.baritems;
+
+        document.body.ontouchmove = function (e) {
+            e.preventDefault();
+        };
     }
 
     function aimateListener(pages) {
