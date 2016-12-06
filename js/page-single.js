@@ -32,9 +32,10 @@ var pageSingle = function (opt) {
         }
         _single.baritems = barItems || _single.baritems;
 
-        document.body.ontouchmove = function (e) {
+        document.body.addEventListener("touchmove",  function (e) {
+            //console.log("1");
             e.preventDefault();
-        };
+        });
     }
 
     function aimateListener(pages) {
