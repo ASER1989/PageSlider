@@ -33,28 +33,27 @@ var pageSingle = function (opt) {
         _single.baritems = barItems || _single.baritems;
 
         document.body.addEventListener("touchmove",  function (e) {
-            //console.log("1");
             e.preventDefault();
         });
     }
 
-    function aimateListener(pages) {
-        var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
-
-        pages.each(function (i, v) {
-            var eventName = isWebkit ? 'webkitAnimationEnd' : 'animationend';
-            $(v)[0].addEventListener(eventName, function () {
-                $(this).removeClass("slide");
-                if ($(this).hasClass("out")) {
-                    $(this).addClass("hide");
-                } else {
-                    $(this).removeClass("hide");
-                }
-                $(this).removeClass("out").removeClass("in").removeClass("reverse");
-                _single.isLock = false;
-            })
-        })
-    }
+    //function aimateListener(pages) {
+    //    var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
+    //
+    //    pages.each(function (i, v) {
+    //        var eventName = isWebkit ? 'webkitAnimationEnd' : 'animationend';
+    //        $(v)[0].addEventListener(eventName, function () {
+    //            $(this).removeClass("slide");
+    //            if ($(this).hasClass("out")) {
+    //                $(this).addClass("hide");
+    //            } else {
+    //                $(this).removeClass("hide");
+    //            }
+    //            $(this).removeClass("out").removeClass("in").removeClass("reverse");
+    //            _single.isLock = false;
+    //        })
+    //    })
+    //}
 
     function next() {
         var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
@@ -131,12 +130,22 @@ var pageSingle = function (opt) {
             _single.index = nidx;
             pageAnimate(custPage, nextPage, isright ? 0 - base.xWidth : base.xWidth);
             return;
+        }else{
+            custPage.css({translation:'all 1s','-webkit-translation':'all 1s'});
+            nextPage.css({translation:'all 1s','-webkit-translation':'all 1s'});
+
+            custPage.offsetWidth = custPage.offsetWidth;
+            custPage.removeAttr('style');
+            nextPage.removeAttr('style');
+
+
         }
     }
 
     function onSwipeStart() {
         //_single.touchTimes = 0;
     }
+
 
     function pageAnimate(custObj, nextObj, offset) {
         custObj.animate(
