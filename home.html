@@ -38,6 +38,9 @@
             border: solid 1px #d6d6d6;
             box-sizing: border-box;
             min-height: 80%;
+            overflow:hidden;
+            transform: translateZ(0);
+            -wetkit-transform: translateZ(0);
         }
 
 
@@ -100,6 +103,15 @@
             padding-left: 4rem;
             color: #3c3c3c;
         }
+        .idx-content>div[data-move] {
+            width: 100%;
+            transition: all 1s !important;
+            -webkit-transition: all 1s !important;
+        }
+        .transLeft {
+            transform: translate3d(-100%,0,0);
+            -webkit-transform: translate3d(-100%,0,0);
+        }
     </style>
 </head>
 <body>
@@ -107,51 +119,55 @@
 </div></div>
 <div class="idx-sec">
     <div class="idx-title">
-        点击查看以下链接查看相关demo
+        个人作品简介
     </div>
     <div class="idx-warp">
         <div class="idx-content">
-            <div class="menu-item-box">
+            <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1000">
                 <div class="menu-item menu-trapezoid-1" data-val="01"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_1.html">页面一</div>
+                <div class="menu-content" data-page="./page_1.html">PageSlider框架介绍</div>
             </div>
 
-            <div class="menu-item-box">
+            <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1300">
                 <div class="menu-item menu-trapezoid-1" data-val="02"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
                 <div class="menu-content" data-page="./page_2.html">页面二</div>
             </div>
 
-            <div class="menu-item-box">
+            <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1600">
                 <div class="menu-item menu-trapezoid-1" data-val="03"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
                 <div class="menu-content" data-page="./page_3.html">页面三</div>
             </div>
 
-            <div class="menu-item-box">
+            <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1900">
                 <div class="menu-item menu-trapezoid-1" data-val="04"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
                 <div class="menu-content" data-page="./page_5.html"  data-hasScript="true">页面四</div>
             </div>
-            <div class="menu-item-box">
-                <div class="menu-item menu-trapezoid-1" data-val="04"></div>
-                <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_6.html">页面五</div>
-            </div>
-            <div class="menu-item-box">
-                <div class="menu-item menu-trapezoid-1" data-val="04"></div>
+            <!--<div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="2200">-->
+                <!--<div class="menu-item menu-trapezoid-1" data-val="04"></div>-->
+                <!--<div class="menu-item menu-trapezoid-2"></div>-->
+                <!--<div class="menu-content" data-page="./page_6.html">页面五</div>-->
+            <!--</div>-->
+            <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="2500">
+                <div class="menu-item menu-trapezoid-1" data-val="05"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
                 <div class="menu-content" data-page="./page_7.html">页面七</div>
             </div>
-            <!--<div class="link" data-page="./page_1.html">page1</div>-->
-            <!--<div class="link" data-page="./page_2.html">page2</div>-->
-            <!--<div class="link" data-page="./page_3.html">page3</div>-->
-            <!--<div class="link" data-page="./page_5.html">page4</div>-->
         </div>
 
     </div>
 
 </div>
+<script type="text/javascript" src="js/me.require.js"></script>
+<script type="text/javascript">
+    require("js/page-move.js", function () {
+        (new move()).start();
+    });
+
+
+</script>
 </body>
 </html>

@@ -18,6 +18,7 @@ var pageSlider = function ($) {
       hashLock = false, //hashchange事件触发锁
       isHistoryBack = false,
       loaderBox = document.createElement("div");
+    loaderBox.id="_page_loader";
     loaderBox.isPre = false;
 
     var _Event = {
@@ -124,7 +125,7 @@ var pageSlider = function ($) {
      * 使用loaderBox进行管理
      * */
     function _loading(text) {
-        text = text || "Loading";
+        text = text || "加载中...";
 
         var lodiv = document.createElement("div");
         var innerdiv = document.createElement("div");
@@ -454,6 +455,9 @@ var pageSlider = function ($) {
         allCount: 0,
         load: function (src) {
             var el = document.createElement("script");
+            el = /\.(jpg|bmp|gif|png|jpeg)/.test(src)?document.createElement("img"):el;
+            el.style.display="none";
+            //el.type=src.indexOf(".js")>=0?"text/html":"";
             el.addEventListener("load", pre.success, false);
             el.addEventListener("error", pre.fail, false);
             el.src = src;

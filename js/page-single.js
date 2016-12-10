@@ -14,6 +14,14 @@ var pageSingle = function (opt) {
         touchTimes: 0,
         baritems: []
     };
+    var _state = {
+        isDirchange: false,
+        poffset: 0,
+        custPage: null,
+        nextPage: null,
+        lastPage: null,
+        isAnimateReady:true
+    };
     var base = {
         xWidth: window.innerWidth
     }
@@ -32,38 +40,15 @@ var pageSingle = function (opt) {
         }
         _single.baritems = barItems || _single.baritems;
 
-        document.body.addEventListener("touchmove",  function (e) {
+        document.body.addEventListener("touchmove", function (e) {
             e.preventDefault();
         });
     }
-
-    //function aimateListener(pages) {
-    //    var isWebkit = 'WebkitAppearance' in document.documentElement.style || typeof document.webkitHidden != "undefined";
-    //
-    //    pages.each(function (i, v) {
-    //        var eventName = isWebkit ? 'webkitAnimationEnd' : 'animationend';
-    //        $(v)[0].addEventListener(eventName, function () {
-    //            $(this).removeClass("slide");
-    //            if ($(this).hasClass("out")) {
-    //                $(this).addClass("hide");
-    //            } else {
-    //                $(this).removeClass("hide");
-    //            }
-    //            $(this).removeClass("out").removeClass("in").removeClass("reverse");
-    //            _single.isLock = false;
-    //        })
-    //    })
-    //}
 
     function next() {
         var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
         if (_single.isReady && !_single.isLock) {
             _single.isLock = true;
-
-
-            //$(_single.pages[nidx]).removeClass("hide").removeClass("out").addClass("in").addClass("slide");
-            //$(_single.pages[_single.index]).offsetWidth = $(_single.pages[_single.index]).offsetWidth;
-            //$(_single.pages[_single.index]).addClass("out").addClass("slide");
 
 
             _single.index = nidx;
@@ -76,10 +61,6 @@ var pageSingle = function (opt) {
         var nidx = _single.index >= 1 ? _single.index - 1 : _single.pages.length - 1;
         if (_single.isReady && !_single.isLock) {
             _single.isLock = true;
-
-            //$(_single.pages[nidx]).removeClass("hide").addClass("in").addClass("reverse").addClass("slide");
-            //$(_single.pages[_single.index]).offsetWidth = $(_single.pages[_single.index]).offsetWidth;
-            //$(_single.pages[_single.index]).addClass("reverse").addClass("out").addClass("slide");
 
             _single.index = nidx;
             bar();
@@ -95,78 +76,121 @@ var pageSingle = function (opt) {
 
     function onSwipe(offset) {
 
-        if (_single.isLock) return;
-        var isright = offset <= 0;
+        if (_single.isReady) {
 
 
-        var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
-        nidx = isright ? nidx : _single.index >= 1 ? _single.index - 1 : _single.pages.length - 1;
+            if (_single.isLock || offset == 0) return;
+            _state.isDirchange = (_state.poffset < 0 && offset > 0) || (_state.poffset > 0 && offset < 0)
+            _state.poffset = offset;
+            var isright = offset <= 0;
 
-        var custPage = $(_single.pages[_single.index]);
-        var nextPage = $(_single.pages[nidx]);
+            if (_state.isDirchange || !_state.custPage) {
 
+                if (_state.isDirchange) {
+                    _state.lastPage = _state.nextPage;
+                    _state.lastPage.css({"transform": "translate3d(" + isright ? "100%" : "-100%" + "px,0,0)"});
+                    _state.lastPage.addClass("hide");
+                    _state.lastPage.offsetWidth = _state.lastPage.offsetWidth;
+                    _state.isDirchange = false;
+                }
 
-        nextPage.css({"transform": "translate3d(" + (isright ? (base.xWidth + offset) : (0 - base.xWidth + offset)) + "px,0,0)"});
-        custPage.css({"transform": "translate3d(" + offset + "px,0,0)"});
-        //$(_single.pages[_single.index]).offsetWidth = $(_single.pages[_single.index]).offsetWidth;
-        nextPage.removeClass("hide");
+                var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
+                nidx = isright ? nidx : _single.index >= 1 ? _single.index - 1 : _single.pages.length - 1;
+
+                _state.custPage = $(_single.pages[_single.index]);
+                _state.nextPage = $(_single.pages[nidx]);
+
+            }
+
+            _state.nextPage.removeClass("hide");
+            _state.nextPage.css({"transform": "translate3d(" + (isright ? (base.xWidth + offset) : (0 - base.xWidth + offset)) + "px,0,0)"});
+            _state.custPage.css({"transform": "translate3d(" + offset + "px,0,0)"});
+            //_state.custPage.offsetWidth = _state.custPage.offsetWidth;
+        }
     }
 
     function onSwipeEnd(offset) {
-        if (_single.isLock) return;
+        if (_single.isReady) {
+            if (_single.isLock || offset == 0) return;
 
-        var isright = offset <= 0;
+            var isright = offset <= 0;
+            //
+            //
+            var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
+            nidx = isright ? nidx : _single.index >= 1 ? _single.index - 1 : _single.pages.length - 1;
+            //
+            //var custPage = $(_single.pages[_single.index]);
+            //var nextPage = $(_single.pages[nidx]);
+
+            if (Math.abs(offset) >= 30) {
+                //isright ? next() : perv();
+                _single.isLock = true;
+                _single.index = nidx;
+                //if (!_state.custPage || !_state.nextPage) {
+                //    console.log("-1")
+                //}
+                pageAnimate(_state.custPage, _state.nextPage, isright ? 0 - base.xWidth : base.xWidth);
+                return;
+            } else {
+                _state.nextPage.css({translation: 'all 1s', '-webkit-translation': 'all 1s'});
+                _state.custPage.css({translation: 'all 1s', '-webkit-translation': 'all 1s'});
+
+                _state.custPage.offsetWidth = _state.custPage.offsetWidth;
+                _state.custPage.removeAttr('style');
+                _state.nextPage.removeAttr('style');
 
 
-        var nidx = _single.index < _single.pages.length - 1 ? _single.index + 1 : 0;
-        nidx = isright ? nidx : _single.index >= 1 ? _single.index - 1 : _single.pages.length - 1;
-
-        var custPage = $(_single.pages[_single.index]);
-        var nextPage = $(_single.pages[nidx]);
-
-        if (Math.abs(offset) >= 30) {
-            isright ? next() : perv();
-            _single.isLock = true;
-            _single.index = nidx;
-            pageAnimate(custPage, nextPage, isright ? 0 - base.xWidth : base.xWidth);
-            return;
-        }else{
-            custPage.css({translation:'all 1s','-webkit-translation':'all 1s'});
-            nextPage.css({translation:'all 1s','-webkit-translation':'all 1s'});
-
-            custPage.offsetWidth = custPage.offsetWidth;
-            custPage.removeAttr('style');
-            nextPage.removeAttr('style');
-
-
+            }
         }
     }
 
     function onSwipeStart() {
+        if (_single.isReady && !_state.isLock) {
+            _state = {
+                isDirchange: false,
+                poffset: 0,
+                custPage: null,
+                nextPage: null,
+                lastPage: null,
+                isAnimateReady:true
+            };
+        }
         //_single.touchTimes = 0;
     }
 
 
     function pageAnimate(custObj, nextObj, offset) {
-        custObj.animate(
-          {
-              transform: 'translate3d(' + offset + 'px,0,0)',
-              '-webkit-transform': 'translate3d(' + offset + 'px,0,0)'
 
-          },
-          {
-              complete: function () {
-                  custObj.addClass("hide");
-                  custObj.removeAttr("style");
-                  _single.isLock = false;
-              },
-              duration: 300
-          });
-
+        if (!custObj || !nextObj) {
+            _single.isLock = false;
+            return;
+        }
+        _single.isAnimateReady = false;
         nextObj.animate(
-          {
-              transform: "translate3d(0,0,0)"
-          }, 300);
+            {
+                transform: "translate3d(0,0,0)"
+            }, 300);
+
+        custObj.animate(
+            {
+                transform: 'translate3d(' + offset + 'px,0,0)',
+                '-webkit-transform': 'translate3d(' + offset + 'px,0,0)'
+
+            },
+            {
+                complete: function () {
+                    custObj.addClass("hide");
+                    custObj.removeAttr("style");
+                    setTimeout(function(){
+                        _single.isLock = false;
+                        //_single.isAnimateReady = true;
+                    },500);
+
+                },
+                duration: 300
+            });
+
+
     }
 
     void function ctor() {
