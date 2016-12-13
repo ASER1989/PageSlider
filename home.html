@@ -4,115 +4,11 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <title>page1</title>
+    <title>个人作品</title>
     <link rel="stylesheet" href="./css/index.css"/>
     <link rel="stylesheet" href="./css/page-slider.css?v=1.77"/>
-    <style type="text/css">
-        .idx-sec{
-            padding-top: 3rem;
-        }
-        .idx-title {
-            width: 83%;
-            height: 2rem;
-            line-height: 2rem;
-            padding-left: 0.5rem;
-            color: #FFFFFF;
-            background-color: #0c873a;
-            position: absolute;
-            top: 4rem;
-            left: 5%;
-            border-bottom-right-radius: 3px;
-            border-top-right-radius: 3px;
-        }
+    <link rel="stylesheet" href="./css/home.css?v=1.77"/>
 
-        .idx-warp {
-            width: 90%;
-            margin: auto;
-
-        }
-
-        .idx-content {
-            padding-top: 2.3rem;
-            padding-left: 0.5rem;
-            margin-left: 2px;
-            border: solid 1px #d6d6d6;
-            box-sizing: border-box;
-            min-height: 80%;
-            overflow:hidden;
-            transform: translateZ(0);
-            -wetkit-transform: translateZ(0);
-        }
-
-
-        /*导航条样式*/
-        .menu-item-box{
-            margin-top: 1.5rem;
-        }
-        .menu-item{
-            height: 1.9rem;
-            width:12.8rem;
-            /*-webkit-box-shadow:0 0 10px #0CC;*/
-        }
-        .menu-trapezoid-1 {
-            height: 0;
-            width: 16rem;
-            border-bottom: 1.25rem solid #f4f4f4;
-            border-left: 0.79rem solid transparent;
-            border-right: 0.79rem solid transparent;
-        }
-
-        .menu-trapezoid-1:after{
-            content: attr(data-val);
-            position: relative;
-            top: 0.9rem;
-            z-index: 99;
-            left: 0.5rem;
-            color:gray
-        }
-        .menu-trapezoid-2 {
-            height: 0;
-            width: 16rem;
-            border-top: 1.25rem solid #f4f4f4;
-            border-left: 0.79rem solid transparent;
-            border-right: 0.79rem solid transparent;
-        }
-        .menu-trapezoid-1:before{
-            content:"";
-            position: absolute;
-            /*bottom:0;*/
-            height: 0;
-            margin-top: 0.55rem;
-            width: 1rem;
-            border-bottom: 0.8rem solid #FFFFFF;
-            border-left: 0.5rem solid transparent;
-            border-right: 0.5rem solid transparent;
-        }
-        .menu-trapezoid-2:before{
-            content:"";
-            position: absolute;
-            margin-top: -1.15rem;
-            /*top:0;*/
-            height: 0;
-            width: 1rem;
-            border-top: 0.8rem solid #FFFFFF;
-            border-left: 0.5rem solid transparent;
-            border-right: 0.5rem solid transparent;
-        }
-        .menu-content{
-            margin-top: -1.7rem;
-            padding-left: 4rem;
-            color: #3c3c3c;
-        }
-        .idx-content>div[data-move] {
-            width: 100%;
-            transition: all 1s !important;
-            -webkit-transition: all 1s !important;
-        }
-        .transLeft {
-            transform: translate3d(-100%,0,0);
-            -webkit-transform: translate3d(-100%,0,0);
-        }
-    </style>
 </head>
 <body>
 <!--<div class="top"><div><img class="home" src="./res/home.png" /></div><div>-->
@@ -132,24 +28,24 @@
             <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1300">
                 <div class="menu-item menu-trapezoid-1" data-val="02"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_2.html">页面二</div>
+                <div class="menu-content" data-page="/demo/EncRPack">微信红包</div>
             </div>
 
             <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1600">
                 <div class="menu-item menu-trapezoid-1" data-val="03"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_3.html">页面三</div>
+                <div class="menu-content" data-page="/demo/EncTransfer">微信转账</div>
             </div>
 
             <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="1900">
                 <div class="menu-item menu-trapezoid-1" data-val="04"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_5.html"  data-hasScript="true">页面四</div>
+                <div class="menu-content" data-page="./page_1.html">关于PageSlider</div>
             </div>
             <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="2500">
                 <div class="menu-item menu-trapezoid-1" data-val="05"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_7.html">页面七</div>
+                <div class="menu-content" data-page="./page_7.html">关于PageMove</div>
             </div>
         </div>
 

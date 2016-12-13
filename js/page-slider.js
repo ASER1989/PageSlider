@@ -135,7 +135,7 @@ var pageSlider = function ($) {
         innerdiv.classList.add("des");
         innerdiv.innerText = text;
 
-        loaderBox.classList.add("loading");
+        loaderBox.classList.add("slider-loading");
         loaderBox.classList.add("hide");
         loaderBox.appendChild(lodiv);
         loaderBox.appendChild(innerdiv);
@@ -175,10 +175,12 @@ var pageSlider = function ($) {
 
                     var resTime = 1000 - ((new Date()).getTime() - reqTime);
 
-                    callback.call(null, data, title);
+                    callback.call(null, data, title,resTime);
+
+                    //loading消失时间至少在页面渲染后少一个时钟（无太大必要性）
                     setTimeout(function () {
                         loaderBox.classList.add("hide");
-                    }, resTime > 0 ? resTime : 0);
+                    }, resTime >= 130 ? resTime : 130);
                 }
             }
         });
@@ -291,16 +293,17 @@ var pageSlider = function ($) {
         _loadPage(url, data, function (res, title) {
 
             document.title = title;
-            $(pages[nidx]).removeClass("hide").addClass("slide in").html("");
+            $(pages[nidx]).html(res);
+            //$(pages[nidx]).removeClass("hide").addClass("slide in").html("");
             //强制重绘 reflow
-            loaderBox.offsetHeight = loaderBox.offsetHeight;
-            $(pages[index]).addClass("slide out");
+            //loaderBox.offsetHeight = loaderBox.offsetHeight;
+            //$(pages[index]).addClass("slide out");
 
 
             $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
-            index = nidx;
+            //index = nidx;
 
 
             if (hasScript)
@@ -308,6 +311,15 @@ var pageSlider = function ($) {
 
             _history(url, data, hasScript, title);
             _historyHandle(_makeHash(url));
+
+            //修改于2016-12-13 防止页面尚未渲染完成匆匆转场
+            setTimeout(function(){
+                $(pages[nidx]).removeClass("hide").addClass("slide in");
+                //强制重绘 reflow
+                loaderBox.offsetHeight = loaderBox.offsetHeight;
+                $(pages[index]).addClass("slide out");
+                index = nidx;
+            },100);
         });
 
 

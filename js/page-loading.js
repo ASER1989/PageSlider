@@ -19,7 +19,7 @@ var loader = function () {
         innerdiv.classList.add("des");
         innerdiv.innerText = text;
 
-        loaderBox.classList.add("loading");
+        loaderBox.classList.add("slider-loading");
         loaderBox.classList.add("hide");
         loaderBox.appendChild(lodiv);
         loaderBox.appendChild(innerdiv);

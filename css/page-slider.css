@@ -129,10 +129,10 @@ html, body {
     /*border:solid 1px red;*/
 
 }
-.hide{display: none}
+.hide{display: none !important;}
 
 /*loading css*/
-.loading{
+.slider-loading{
     position: absolute;
     left: 0;
     top:0;
@@ -144,7 +144,7 @@ html, body {
     padding-top: 50%;
     box-sizing: border-box;
 }
-.loading>.loader{
+.slider-loading>.loader{
     background: url("../res/loading-1.png")  no-repeat;
     background-size: 100% auto;
     height: 56px;
@@ -156,7 +156,7 @@ html, body {
     -webkit-animation-duration: 550ms;
     transform: scale(.65);
 }
-.loading>.des{
+.slider-loading>.des{
     text-align: center;
     color: #FFFFFF;
 }
