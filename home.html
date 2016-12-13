@@ -159,7 +159,8 @@
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
     require("js/page-move.js", function () {
-        (new move()).start();
+        window.move =new move();
+        window.move.start();
     });
 
 

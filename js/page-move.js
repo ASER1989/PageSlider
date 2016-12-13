@@ -6,14 +6,18 @@
  * @data-delay 延迟时间,以毫秒为单位
  * @data-cls 需要添加的样式
  * @data-delCls 需要移除的样式
+ *
+ * 方法说明
+ * @Fn: start 开始执行动画；可接受callback函数，动画队列执行完成后调用（仅队列执行完成，非动画执行完成）
+ * @Fn: reset 动画回滚； 参数同上；
  */
 var move = function () {
 
     var that = this,
-      $ = selectorInit(),
-      type = typeInit();
+        $ = selectorInit(),
+        type = typeInit();
 
-    var threads = [];
+    var threads = [], reThreads = [];
 
     void function init() {
         that.Els = $("[data-move='true']");
@@ -24,17 +28,35 @@ var move = function () {
             var cls = item.attr("data-cls");
             var delcls = item.attr("data-delCls");
 
-            (cls || delcls) && threads.push(new thread(function () {
+            (cls || delcls) &&
+            threads.push(new thread(function () {
                 cls && item.addClass(cls);
                 delcls && item.removeClass(delcls);
+            }, time)) &&
+            reThreads.push(new thread(function () {
+                delcls && item.addClass(delcls);
+                cls && item.removeClass(cls);
             }, time));
         });
     }();
 
 
-    var start = function () {
+    var start = function (callback) {
+        var len = 0;
         threads.forEach(function (item) {
-            item.start();
+            item.start(function () {
+                len++;
+                len == threads.length && type.isFunction(callback) && callback.call();
+            });
+        });
+    }
+    var reset = function (callback) {
+        var len = 0;
+        reThreads.forEach(function (item) {
+            item.start(function () {
+                len++;
+                len == threads.length && type.isFunction(callback) && callback.call();
+            });
         });
     }
 
@@ -85,12 +107,12 @@ var move = function () {
             return el;
         }
 
-        NodeList.prototype.forEach=Array.prototype.forEach=function(fn){
-            var callback=function(obj,item,i){
-                var res = fn.call(obj,item,i);
-                return res==null?true:res;
+        NodeList.prototype.forEach = Array.prototype.forEach = function (fn) {
+            var callback = function (obj, item, i) {
+                var res = fn.call(obj, item, i);
+                return res == null ? true : res;
             }
-            for(var i =0;i<this.length && callback(this[i],this[i],i);i++){
+            for (var i = 0; i < this.length && callback(this[i], this[i], i); i++) {
 
 
             }
@@ -121,8 +143,11 @@ var move = function () {
     function thread(fn, time) {
         var timer = null;
 
-        function start() {
-            timer = setTimeout(fn, time);
+        function start(callback) {
+            timer = setTimeout(function () {
+                fn.call();
+                type.isFunction(callback) && callback.call(null, time);
+            }, time);
         }
 
         function end() {
@@ -136,7 +161,8 @@ var move = function () {
     }
 
     return {
-        start: start
+        start: start,
+        reset: reset
     }
 
 }

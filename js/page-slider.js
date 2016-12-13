@@ -9,16 +9,16 @@
 
 var pageSlider = function ($) {
     var index = 1,
-      pages,
-      history = [],
-      lastModel = null,
-      preModel = null,
-      transLock = false, //转场锁定
-      rawUrl = new String(window.location).replace(/#[^#]+/, ""), //页面原始url
-      hashLock = false, //hashchange事件触发锁
-      isHistoryBack = false,
-      loaderBox = document.createElement("div");
-    loaderBox.id="_page_loader";
+        pages,
+        history = [],
+        lastModel = null,
+        preModel = null,
+        transLock = false, //转场锁定
+        rawUrl = new String(window.location).replace(/#[^#]+/, ""), //页面原始url
+        hashLock = false, //hashchange事件触发锁
+        isHistoryBack = false,
+        loaderBox = document.createElement("div");
+    loaderBox.id = "_page_loader";
     loaderBox.isPre = false;
 
     var _Event = {
@@ -373,7 +373,7 @@ var pageSlider = function ($) {
             if (!hashLock) {
                 isHistoryBack = true;
                 //if (history.length > 0 && window.location.hash == "#" + _makeHash(history[history.length-1].url))
-                    _goBack();
+                _goBack();
                 //return;
             }
             hashLock = false;
@@ -455,8 +455,9 @@ var pageSlider = function ($) {
         allCount: 0,
         load: function (src) {
             var el = document.createElement("script");
-            el = /\.(jpg|bmp|gif|png|jpeg)/.test(src)?document.createElement("img"):el;
-            el.style.display="none";
+            el.type = /\.(htm|html|aspx)/.test(src) ? "text/html" : "text/javascript";
+            el = /\.(jpg|bmp|gif|png|jpeg)/.test(src) ? document.createElement("img") : el;
+            el.style.display = "none";
             //el.type=src.indexOf(".js")>=0?"text/html":"";
             el.addEventListener("load", pre.success, false);
             el.addEventListener("error", pre.fail, false);
@@ -478,7 +479,7 @@ var pageSlider = function ($) {
 
     function pagePreLoad(uri, callback) {
         pre.callback = callback || function () {
-          };
+            };
         pre.allCount = type.isArray(uri) ? uri.length : 1;
 
         type.isArray(uri) ? uri.forEach(function (v) {
