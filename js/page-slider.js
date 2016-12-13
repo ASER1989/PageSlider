@@ -454,11 +454,11 @@ var pageSlider = function ($) {
         callback: null,
         allCount: 0,
         load: function (src) {
-            var el = document.createElement("script");
-            el.type = /\.(htm|html|aspx)/.test(src) ? "text/html" : "text/javascript";
+            var el = document.createElement("iframe");
+            el = /\.js/.test(src)?document.createElement("script"):el;
             el = /\.(jpg|bmp|gif|png|jpeg)/.test(src) ? document.createElement("img") : el;
+
             el.style.display = "none";
-            //el.type=src.indexOf(".js")>=0?"text/html":"";
             el.addEventListener("load", pre.success, false);
             el.addEventListener("error", pre.fail, false);
             el.src = src;
