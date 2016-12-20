@@ -91,3 +91,23 @@ img{
     vertical-align: middle;
     overflow: hidden;
 }
+.page-next-link{
+    text-align: right;
+}
+.page-link-pos
+{
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    background: url(../res/pos.png) no-repeat;
+    background-size: 100%;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #777777;
+    font-weight: 600;
+    text-indent: initial !important;
+    letter-spacing: initial !important;
+    background-color: white;
+    padding-top: 1.1rem;
+    padding-right: 0.5rem;
+}
