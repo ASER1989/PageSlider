@@ -1,17 +1,40 @@
-transform(val) {
-
+transform(val)
   transform val;
   -webkit-transform val;
   -moz-transform val;
 
-}
-
-translation(val) {
+translation(val)
   translation val;
   -webkit-translation val;
   -moz-translation val;
-}
+  -o-translation val
+
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+opacity(val)
+  opacity val
+  -webkit-opacity val
+  -moz-opacity val
+
+display(val)
+  if val == 'box'
+    display box
+    display -webkit-box
+  else
+    display val
+
+user-select(val)
+  -webkit-touch-callout: val;
+  -webkit-user-select: val;
+  -khtml-user-select: val;
+  -moz-user-select: val;
+  -ms-user-select: val;
+  user-select: val;
 
 .t {
   transform translateX(100px)
+  display: box
 }

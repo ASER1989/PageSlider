@@ -1,6 +1,9 @@
 /**
  * Created by aser on 16/11/18.
  * 工作原理:根据节点上的时间设定,添加或移除指定样式名称,实现动画效果
+ * 参数说明
+ * @n 父级元素选择器（如：id，class值）
+ *
  * 属性说明
  * @data-move 当前节点需要执行动画
  * @data-delay 延迟时间,以毫秒为单位
@@ -11,7 +14,7 @@
  * @Fn: start 开始执行动画；可接受callback函数，动画队列执行完成后调用（仅队列执行完成，非动画执行完成）
  * @Fn: reset 动画回滚； 参数同上；
  */
-var move = function () {
+var move = function (n) {
 
     var that = this,
         $ = selectorInit(),
@@ -20,7 +23,10 @@ var move = function () {
     var threads = [], reThreads = [];
 
     void function init() {
-        that.Els = $("[data-move='true']");
+        var sel = "[data-move='true']";
+        sel = n==null?sel:n+" "+sel;
+
+        that.Els = $(sel);
         that.stime = +new Date();//开始时间
 
         that.Els.forEach(function (item) {
@@ -38,7 +44,7 @@ var move = function () {
                 cls && item.removeClass(cls);
             }, time));
         });
-    }();
+    }(n);
 
 
     var start = function (callback) {

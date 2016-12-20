@@ -12,8 +12,8 @@
 </head>
 <body>
 <!--<div class="top"><div><img class="home" src="./res/home.png" /></div><div>-->
-</div></div>
-<div class="idx-sec">
+
+<div class="idx-sec" id="page-home">
     <div class="idx-title">
         个人作品简介
     </div>
@@ -45,7 +45,7 @@
             <div class="menu-item-box transLeft"  data-move="true" data-delcls="transLeft" data-delay="2500">
                 <div class="menu-item menu-trapezoid-1" data-val="05"></div>
                 <div class="menu-item menu-trapezoid-2"></div>
-                <div class="menu-content" data-page="./page_7.html">关于PageMove</div>
+                <div class="menu-content" data-page="./move.html">关于PageMove</div>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
     require("js/page-move.js", function () {
-        window.move =new move();
+        window.move =new move("#page-home");
         window.move.start();
     });
 

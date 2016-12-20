@@ -20,7 +20,9 @@
 <script type="text/javascript">
 
     require(['./js/zepto.js', './js/zoom.js', './js/page-slider.js','./js/ImgLoader.js','./js/page-move.js'], function () {
-        zoom($).calc();
+       var pageZoom= zoom($);
+        pageZoom.calc();
+        $(window).on('resize',pageZoom.calc);
         var ps = pageSlider($);
         ps.ready({
             el: "#warp",
@@ -34,5 +36,7 @@
         });
 
         ps.preLoad(['./res/loading-1.png',"./page_1.html", "./page_2.html", "./page_3.html"]);
+
+
     });
 </script>

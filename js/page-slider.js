@@ -175,7 +175,7 @@ var pageSlider = function ($) {
 
                     var resTime = 1000 - ((new Date()).getTime() - reqTime);
 
-                    callback.call(null, data, title,resTime);
+                    callback.call(null, data, title, resTime);
 
                     //loading消失时间至少在页面渲染后少一个时钟（无太大必要性）
                     setTimeout(function () {
@@ -313,13 +313,13 @@ var pageSlider = function ($) {
             _historyHandle(_makeHash(url));
 
             //修改于2016-12-13 防止页面尚未渲染完成匆匆转场
-            setTimeout(function(){
+            setTimeout(function () {
                 $(pages[nidx]).removeClass("hide").addClass("slide in");
                 //强制重绘 reflow
                 loaderBox.offsetHeight = loaderBox.offsetHeight;
                 $(pages[index]).addClass("slide out");
                 index = nidx;
-            },100);
+            }, 100);
         });
 
 
@@ -467,7 +467,7 @@ var pageSlider = function ($) {
         allCount: 0,
         load: function (src) {
             var el = document.createElement("iframe");
-            el = /\.js/.test(src)?document.createElement("script"):el;
+            el = /\.js/.test(src) ? document.createElement("script") : el;
             el = /\.(jpg|bmp|gif|png|jpeg)/.test(src) ? document.createElement("img") : el;
 
             el.style.display = "none";
