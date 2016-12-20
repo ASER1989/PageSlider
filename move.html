@@ -21,7 +21,8 @@
 </div>
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
-    require(["js/page-move.js",'js/zepto.js'], function () {
+    require(["js/page-move.js",'js/zepto.js','js/zoom.js'], function () {
+        new zoom($).calc();
         var pageMove = new move("#move-page");
         pageMove.start();
         $(".move-reset").on("click",function(){
