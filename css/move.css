@@ -18,8 +18,9 @@
   user-select: none;
 }
 #move-page {
-  width: 100%;
+  width: 20rem;
   height: 100%;
+  overflow: hidden;
 }
 #move-page .header {
   background: rgba(111,111,111,0.06);
@@ -67,6 +68,7 @@
 }
 #move-page .content {
   width: 20rem;
+  min-height: 11.6rem;
   text-indent: 2em;
   letter-spacing: 1px;
   font-size: 0.9rem;
