@@ -245,7 +245,15 @@ var pageSlider = function ($) {
             var that = $(v);
             var link = that.attr("data-page");
 
-            if (link.length > 0 && link != "goback()") {
+            if (/back\s/.test(link)) {
+                var url = link.split(" ");
+                if (url[1]) {
+                    that.on("click",function() {
+                        _backTo(url[1]);
+                    });
+                }
+            }
+            else if (link.length > 0 && link != "goback()") {
                 var hasScript = that.attr("data-hasScript");
                 that.on("click", function () {
                     _transToPage(link, null, hasScript);
@@ -293,13 +301,7 @@ var pageSlider = function ($) {
         _loadPage(url, data, function (res, title) {
 
             document.title = title;
-            $(pages[nidx]).html(res);
-            //$(pages[nidx]).removeClass("hide").addClass("slide in").html("");
-            //强制重绘 reflow
-            //loaderBox.offsetHeight = loaderBox.offsetHeight;
-            //$(pages[index]).addClass("slide out");
-
-
+            //$(pages[nidx]).html(res);
             $(pages[nidx]).html(res);
 
             _newPageEventBind($(pages[nidx]));
@@ -335,8 +337,8 @@ var pageSlider = function ($) {
 
         if (history.length > 1) {
             lastModel = history.pop();
-            var model = history[history.length - 1];
 
+            var model = history[history.length - 1];
             var nidx = index == 0 ? 2 : index - 1;
 
             $(pages[index]).addClass("reverse out");
@@ -365,6 +367,58 @@ var pageSlider = function ($) {
         }
         return false
 
+    }
+    function _backTo(url){
+
+        if(url!=null){
+
+            var nidx = index == 0 ? 2 : index - 1;
+            //history
+            for(;history.length>1;){
+                var i = history.length-1;
+                var item = history[i];
+                if(item.url == url)
+                {
+                    break;
+                }
+                history.pop();
+                //window.history.back();
+            }
+            if (lastModel && lastModel.url ==url) {
+
+                document.title = lastModel.title;
+                $(pages[index]).addClass("reverse out");
+                $(pages[nidx]).removeClass("hide").addClass("slide reverse in");
+                //强制重绘 reflow
+                loaderBox.offsetHeight = loaderBox.offsetHeight;
+                $(pages[index]).addClass("slide");
+
+                index = nidx;
+                window.history.back();
+                return;
+            }
+
+            _loadPage(url, null, function (res, title) {
+
+                document.title = title;
+                //$(pages[nidx]).html(res);
+                $(pages[nidx]).html(res);
+
+                _newPageEventBind($(pages[nidx]));
+
+                _history(url, null, false, title);
+
+                //修改于2016-12-13 防止页面尚未渲染完成匆匆转场
+                setTimeout(function () {
+                    $(pages[index]).addClass("reverse out");
+                    $(pages[nidx]).removeClass("hide").addClass("slide reverse in");
+                    //强制重绘 reflow
+                    loaderBox.offsetHeight = loaderBox.offsetHeight;
+                    $(pages[index]).addClass("slide");
+                    index = nidx;
+                }, 100);
+            });
+        }
     }
 
     function _makeHash(url) {
