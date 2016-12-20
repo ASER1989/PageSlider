@@ -83,3 +83,11 @@ img{
 .banner-img{
     min-height: 20rem;
 }
+
+.page-img-cut{
+    width:20rem;
+    height: 17rem;
+    line-height: 16rem;
+    vertical-align: middle;
+    overflow: hidden;
+}
