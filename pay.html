@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>pay</title>
+    <link rel="stylesheet" href="./css/pay.css">
+
+</head>
+<body>
+<div id="pay-page" class="hide">
+    <div class="card">
+        <div class="product">
+            捐赠共勉
+        </div>
+        <div class="proAttr">
+            <div data-val="100" class="check">基础版</div>
+            <div data-val="1000">标准版</div>
+            <div data-val="10000">豪放版</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/me.require.js"></script>
+<script type="text/javascript">
+    require(["js/page-move.js",'js/zepto.js','js/zoom.js'], function () {
+        new zoom($).calc();
+        $("#pay-page").removeClass("hide");
+//        var pageMove = new move("#move-page");
+//        pageMove.start();
+    });
+</script>
+</body>
+</html>

@@ -1,13 +1,13 @@
-transform(val)
-  transform val;
-  -webkit-transform val;
-  -moz-transform val;
+transform()
+  transform arguments;
+  -webkit-transform arguments;
+  -moz-transform arguments;
 
-translation(val)
-  translation val;
-  -webkit-translation val;
-  -moz-translation val;
-  -o-translation val
+translation()
+  translation arguments;
+  -webkit-translation arguments;
+  -moz-translation arguments;
+  -o-translation arguments
 
 border-radius(n)
   -webkit-border-radius n
@@ -34,7 +34,9 @@ user-select(val)
   -ms-user-select: val;
   user-select: val;
 
-.t {
-  transform translateX(100px)
-  display: box
-}
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+  border: none
+  user-select: none
