@@ -15,7 +15,7 @@
             捐赠共勉
         </div>
         <div id="proAttr" class="proAttr">
-            <div data-val="100" class="check">基础版</div>
+            <div data-val="10" class="check">基础版</div>
             <div data-val="1000">标准版</div>
             <div data-val="10000">豪放版</div>
         </div>
@@ -23,7 +23,7 @@
     <div class="bottom">
         <div class="info">
             <span> RMB: <label id="_price">1</label> x </span>
-            <select>
+            <select id="_pnum">
                 <option value="1">&nbsp;1</option>
                 <option value="2">&nbsp;2</option>
                 <option value="3">&nbsp;3</option>
@@ -37,24 +37,116 @@
             </select>
         </div>
         <div>
-            <a class="paybutt" href="javascript:void(0)">支付一个</a>
+            <a id="_paybutt" class="paybutt" href="javascript:void(0)">支付一个</a>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
-    require(["js/page-move.js",'js/zepto.js','js/zoom.js'], function () {
-        new zoom($).calc();
-        $("#pay-page").removeClass("hide");
+    require(["http://res.wx.qq.com/open/js/jweixin-1.0.0.js","./js/page-move.js",'./js/zepto.js','./js/zoom.js'], function () {
+        $.ajax({
+            url: "/demo/WxInit",
+            data: {url: window.location.href},
+            success: function (data) {
+                data = JSON.parse(data);
+                wx.config({
+                    debug: false,
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone',
+                        'hideMenuItems',
+                        'showMenuItems',
+                        'hideAllNonBaseMenuItem',
+                        'showAllNonBaseMenuItem',
+                        'translateVoice',
+                        'startRecord',
+                        'stopRecord',
+                        'onVoiceRecordEnd',
+                        'playVoice',
+                        'onVoicePlayEnd',
+                        'pauseVoice',
+                        'stopVoice',
+                        'uploadVoice',
+                        'downloadVoice',
+                        'chooseImage',
+                        'previewImage',
+                        'uploadImage',
+                        'downloadImage',
+                        'getNetworkType',
+                        'openLocation',
+                        'getLocation',
+                        'hideOptionMenu',
+                        'showOptionMenu',
+                        'closeWindow',
+                        'scanQRCode',
+                        'chooseWXPay',
+                        'openProductSpecificView',
+                        'addCard',
+                        'chooseCard',
+                        'openCard'
+                    ]
+                });
 
-        var price=$("#_price"),hobby=100;
-        $("#proAttr div").on("click",function(){
-            var that = $(this);
-            that.parent().find("div").removeClass("check");
-            that.addClass("check");
-            price.html(that.attr("data-val")/100);
-            hobby= that.attr("data-val")
-        });
+                wx.ready(function () {
+
+                    new zoom($).calc();
+                    $("#pay-page").removeClass("hide");
+
+                    var price = $("#_price"), hobby = 100;
+                    $("#proAttr div").on("click", function () {
+                        var that = $(this);
+                        that.parent().find("div").removeClass("check");
+                        that.addClass("check");
+                        price.html(that.attr("data-val") / 100);
+                        hobby = that.attr("data-val")
+                    });
+
+                    $("#_paybutt").on("click", function () {
+                        var amt = hobby*$("#_pnum").val();
+                        $.ajax({
+                            url: "/demo/GetPayConfig?amt=100",
+                            dataType: "json",
+                            data: {amt: amt},
+                            success: function (data) {
+
+                                try {
+                                    var config = data;
+                                    config.timestamp = Number(config.timeStamp);
+                                    config.success = function () {
+                                        alert("感谢您的馈赠！");
+                                        paySuccess(amt)
+                                    }
+
+                                    wx.chooseWXPay(config);
+                                } catch (e) {
+
+                                }
+                            }
+                        });
+                    });
+
+                    function paySuccess(amt){
+                        $.ajax({
+                            url:"/demo/paysuccess",
+                            data:{amt:amt},
+                            success:function(){
+
+                            }
+                        })
+                    }
+
+                });
+            }
+
+        })
     });
 </script>
 </body>
