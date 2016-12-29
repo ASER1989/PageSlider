@@ -14,10 +14,30 @@
         <div class="product">
             捐赠共勉
         </div>
-        <div class="proAttr">
+        <div id="proAttr" class="proAttr">
             <div data-val="100" class="check">基础版</div>
             <div data-val="1000">标准版</div>
             <div data-val="10000">豪放版</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="info">
+            <span> RMB: <label id="_price">1</label> x </span>
+            <select>
+                <option value="1">&nbsp;1</option>
+                <option value="2">&nbsp;2</option>
+                <option value="3">&nbsp;3</option>
+                <option value="4">&nbsp;4</option>
+                <option value="5">&nbsp;5</option>
+                <option value="6">&nbsp;6</option>
+                <option value="7">&nbsp;7</option>
+                <option value="8">&nbsp;8</option>
+                <option value="9">&nbsp;9</option>
+                <option value="10">&nbsp;10</option>
+            </select>
+        </div>
+        <div>
+            <a class="paybutt" href="javascript:void(0)">支付一个</a>
         </div>
     </div>
 </div>
@@ -26,8 +46,15 @@
     require(["js/page-move.js",'js/zepto.js','js/zoom.js'], function () {
         new zoom($).calc();
         $("#pay-page").removeClass("hide");
-//        var pageMove = new move("#move-page");
-//        pageMove.start();
+
+        var price=$("#_price"),hobby=100;
+        $("#proAttr div").on("click",function(){
+            var that = $(this);
+            that.parent().find("div").removeClass("check");
+            that.addClass("check");
+            price.html(that.attr("data-val")/100);
+            hobby= that.attr("data-val")
+        });
     });
 </script>
 </body>
