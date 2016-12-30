@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 #pay-page {
   width: 20rem;
@@ -87,6 +88,10 @@
 }
 #pay-page .bottom >div:last-child {
   padding-right: 1rem;
+}
+#pay-page .paybox {
+  line-height: initial !important;
+  padding-top: 0.55rem !important;
 }
 #pay-page .paybutt {
   width: 5rem;

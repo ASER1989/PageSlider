@@ -11,22 +11,25 @@
 <body>
 <div id="wx-page">
     <div class="header header-leave" data-move="true" data-delcls="header-leave" data-delay="300">
-        <img class="banner" src="./res/wx-bg.jpg" />
+        <img class="banner" src="./res/wx-bg.jpg"/>
     </div>
-    <div class="content content-leave"  data-move="true" data-delcls="content-leave" data-delay="500">
-        page move是一款用于处理页面动画执行的js插件。通过读取页面元素属性配置，对元素进行样式的添加或删除，实现有序的页面动画。插件不依赖任何第三方js库，可独立运行于各种移动设备（仅支持部分pc浏览器）。
-        插件特色在于可以自定义动画的开始时间，或执行<i class="move-reset">动画回退效果</i>。
+    <div class="content content-leave" data-move="true" data-delcls="content-leave" data-delay="500">
+        当前模块为微信相关功能开发展示模块，该功能主要使用Asp.Net、Html5、Css3、JavaScript（Ajax、Json）等相关技术。微信API方面主要使用了：
+        网页身份验证接口、红包接口、转账支付接口、JSSDK，共实现一下三个功能（请点击查看）:
+        <div class="page-link" data-page="/demo/EncRPack">1、微信红包</div>
+        <div class="page-link" data-page="/demo/EncTransfer">2、微信转账</div>
+        <div class="page-link" data-page="./pay.html">3、微信支付</div>
     </div>
 </div>
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
-    require(["js/page-move.js",'js/zepto.js','js/zoom.js'], function () {
+    require(["js/page-move.js", 'js/zepto.js', 'js/zoom.js'], function () {
         new zoom($).calc();
         var pageMove = new move("#wx-page");
         pageMove.start();
-        $(".move-reset").on("click",function(){
-            pageMove.reset(function(){
-                setTimeout(pageMove.start,500);
+        $(".move-reset").on("click", function () {
+            pageMove.reset(function () {
+                setTimeout(pageMove.start, 500);
             });
         });
     });

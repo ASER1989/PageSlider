@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60e69516-caaf-4162-97ef-5b9b74f369ab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/wx-bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/wx-page.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wx_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/wx-bg.jpg" afterPath="$PROJECT_DIR$/res/wx-bg.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pay.css" afterPath="$PROJECT_DIR$/css/pay.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pay.styl" afterPath="$PROJECT_DIR$/css/pay.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/wx-page.styl" afterPath="$PROJECT_DIR$/css/wx-page.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.html" afterPath="$PROJECT_DIR$/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pay.html" afterPath="$PROJECT_DIR$/pay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wx_page.html" afterPath="$PROJECT_DIR$/wx_page.html" />
     </list>
     <ignored path="PageSlider.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +39,21 @@
       <file leaf-file-name="pay.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state vertical-scroll-proportion="-9.652174">
+              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
               <folding>
-                <element signature="e#2439#4206#0" expanded="false" />
+                <element signature="e#2454#4221#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8094463">
+              <caret line="37" column="118" selection-start-line="37" selection-start-column="118" selection-end-line="37" selection-end-column="118" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,18 +71,18 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6086955">
-              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+            <state vertical-scroll-proportion="-24.043478">
+              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wx_page.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wx_page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wx_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54723126">
-              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+            <state vertical-scroll-proportion="-9.73913">
+              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -76,8 +91,8 @@
       <file leaf-file-name="wx-page.styl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/wx-page.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.782609">
-              <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state vertical-scroll-proportion="-8.434783">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -86,8 +101,8 @@
       <file leaf-file-name="pay.styl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/pay.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.3913045">
-              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+            <state vertical-scroll-proportion="-9.043478">
+              <caret line="69" column="9" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -97,8 +112,10 @@
         <entry file="file://$PROJECT_DIR$/css/pay.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-52.869564">
-              <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
-              <folding />
+              <caret line="114" column="15" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
+              <folding>
+                <marker date="1483084108906" expanded="true" signature="2:73" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,9 +166,7 @@
         <option value="$PROJECT_DIR$/css/move.styl" />
         <option value="$PROJECT_DIR$/js/page-slider.js" />
         <option value="$PROJECT_DIR$/about.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/home.css" />
-        <option value="$PROJECT_DIR$/home.html" />
         <option value="$PROJECT_DIR$/page_3.html" />
         <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/page_1.html" />
@@ -160,12 +175,14 @@
         <option value="$PROJECT_DIR$/move.html" />
         <option value="$PROJECT_DIR$/css/page-slider.css" />
         <option value="$PROJECT_DIR$/js/page-dialog.js" />
-        <option value="$PROJECT_DIR$/pay.html" />
-        <option value="$PROJECT_DIR$/css/pay.styl" />
         <option value="$PROJECT_DIR$/css/pay.css" />
         <option value="$PROJECT_DIR$/css/comm.styl" />
-        <option value="$PROJECT_DIR$/css/wx-page.styl" />
         <option value="$PROJECT_DIR$/wx_page.html" />
+        <option value="$PROJECT_DIR$/home.html" />
+        <option value="$PROJECT_DIR$/css/wx-page.styl" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/pay.styl" />
+        <option value="$PROJECT_DIR$/pay.html" />
       </list>
     </option>
   </component>
@@ -262,40 +279,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageSlider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageSlider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageSlider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageSlider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pay.styl" />
-              <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -334,8 +319,8 @@
       <recent name="E:\CordLib\PageSlider" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\CordLib\PageSlider\css" />
       <recent name="E:\CordLib\PageSlider\res" />
+      <recent name="E:\CordLib\PageSlider\css" />
       <recent name="E:\CordLib\PageSlider" />
       <recent name="E:\CordLib\PageSlider\js" />
       <recent name="$PROJECT_DIR$/js" />
@@ -718,14 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77198696">
-          <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/page-slider.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42996743">
@@ -777,25 +754,9 @@
     <entry file="file://$PROJECT_DIR$/css/pay.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-52.869564">
-          <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/pay.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.3913045">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <caret line="114" column="15" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
           <folding>
-            <element signature="e#2439#4206#0" expanded="false" />
+            <marker date="1483084108906" expanded="true" signature="2:73" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -808,26 +769,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
+    <entry file="file://$PROJECT_DIR$/wx_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6086955">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        <state vertical-scroll-proportion="-9.73913">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/wx-page.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.782609">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        <state vertical-scroll-proportion="-8.434783">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx_page.html">
+    <entry file="file://$PROJECT_DIR$/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54723126">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        <state vertical-scroll-proportion="-24.043478">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/pay.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.043478">
+          <caret line="69" column="9" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.652174">
+          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+          <folding>
+            <element signature="e#2454#4221#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8094463">
+          <caret line="37" column="118" selection-start-line="37" selection-start-column="118" selection-end-line="37" selection-end-column="118" />
           <folding />
         </state>
       </provider>
