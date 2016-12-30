@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>pay</title>
     <link rel="stylesheet" href="./css/pay.css">
+    <link rel="stylesheet" href="./css/page-slider.css?v=1A">
 
 </head>
 <body>
@@ -43,7 +44,10 @@
 </div>
 <script type="text/javascript" src="js/me.require.js"></script>
 <script type="text/javascript">
-    require(["http://res.wx.qq.com/open/js/jweixin-1.0.0.js","./js/page-move.js",'./js/zepto.js','./js/zoom.js'], function () {
+    require(["http://res.wx.qq.com/open/js/jweixin-1.0.0.js","./js/page-move.js",'./js/zepto.js','./js/zoom.js','./js/page-loading.js','./js/page-dialog.js'], function () {
+        new zoom($).calc();
+        var loading = loader();
+        var dialog = dialoger();
         $.ajax({
             url: "/demo/WxInit",
             data: {url: window.location.href},
@@ -97,7 +101,6 @@
 
                 wx.ready(function () {
 
-                    new zoom($).calc();
                     $("#pay-page").removeClass("hide");
 
                     var price = $("#_price"), hobby = 100;
@@ -110,18 +113,19 @@
                     });
 
                     $("#_paybutt").on("click", function () {
-                        var amt = hobby*$("#_pnum").val();
+                        var amt =Number(hobby)*$("#_pnum").val();
+                        loading.show();
                         $.ajax({
-                            url: "/demo/GetPayConfig?amt=100",
+                            url: "/demo/GetPayConfig",
                             dataType: "json",
                             data: {amt: amt},
                             success: function (data) {
-
+                                loading.hide();
                                 try {
                                     var config = data;
                                     config.timestamp = Number(config.timeStamp);
                                     config.success = function () {
-                                        alert("感谢您的馈赠！");
+                                        dialog.show("消息","感谢您的馈赠！",{"text-align":"center","padding-top":"16%"});
                                         paySuccess(amt)
                                     }
 
@@ -143,10 +147,38 @@
                         })
                     }
 
+                    onShare(wx,'黄旭-小作品','http://aser.src.demo.ahyunhe.com/demo/payinit','http://aser.src.demo.ahyunhe.com/src/res/100.jpg');
                 });
             }
 
         })
+
+        function onShare(wx,title,link,img){
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: img, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: title, // 分享描述
+                link: link, // 分享链接
+                imgUrl: img, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        }
     });
 </script>
 </body>
