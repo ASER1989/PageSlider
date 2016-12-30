@@ -48,7 +48,10 @@
   font-size: 1.8rem;
   line-height: 4rem;
   color: #8a8a8a;
-  transition: all 0.6s;
+  transition: transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  -moz-transition: -moz-transform 0.6s;
+  -o-transition: -o-transform 0.6s;
 }
 #pay-page .proAttr >div:nth-child(2) {
   border-left: solid 1px #cecece;
