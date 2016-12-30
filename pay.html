@@ -16,12 +16,12 @@
             捐赠共勉
         </div>
         <div id="proAttr" class="proAttr">
-            <div data-val="10" class="check">基础版</div>
-            <div data-val="1000">标准版</div>
-            <div data-val="10000">豪放版</div>
+            <div data-val="100" class="check hobbyAnimate" data-move="true" data-delcls="hobbyAnimate" data-delay="800">基础版</div>
+            <div class="hobbyAnimate" data-val="1000" data-move="true"  data-delcls="hobbyAnimate"  data-delay="1000">标准版</div>
+            <div class="hobbyAnimate" data-val="10000" data-move="true"  data-delcls="hobbyAnimate"  data-delay="1200">豪放版</div>
         </div>
     </div>
-    <div class="bottom">
+    <div class="bottom bottom-leave" data-move="true" data-delay="1200" data-delcls="bottom-leave">
         <div class="info">
             <span> RMB: <label id="_price">1</label> x </span>
             <select id="_pnum">
@@ -48,6 +48,8 @@
         new zoom($).calc();
         var loading = loader();
         var dialog = dialoger();
+        var pmove = new move("#pay-page");
+
         $.ajax({
             url: "/demo/WxInit",
             data: {url: window.location.href},
@@ -102,6 +104,7 @@
                 wx.ready(function () {
 
                     $("#pay-page").removeClass("hide");
+                    pmove.start();
 
                     var price = $("#_price"), hobby = 100;
                     $("#proAttr div").on("click", function () {
@@ -125,7 +128,7 @@
                                     var config = data;
                                     config.timestamp = Number(config.timeStamp);
                                     config.success = function () {
-                                        dialog.show("消息","感谢您的馈赠！",{"text-align":"center","padding-top":"16%"});
+                                        dialog.show("消息","感谢您的馈赠！",{"text-align":"center","padding-top":"30px"});
                                         paySuccess(amt)
                                     }
 

@@ -27,12 +27,14 @@
     border-top:none !important;
     height 4rem
     display box
+    overflow: hidden;
     >div
       width 33.33%
       text-align center
       font-size 1.8rem
       line-height 4rem;
       color: #8a8a8a
+      transition all .6s
       &:nth-child(2)
         border-left:solid 1px #cecece
         border-right:solid 1px #cecece
@@ -52,6 +54,7 @@
     border-top: solid 1px #e6e6e6;
     background-color: rgba(239, 239, 239, 0.56);
     display box
+    transition all 0.5s
     >div
       text-align: right;
       line-height: 3rem;
@@ -98,3 +101,8 @@
     display: inline-block;
     font-size: 1rem;
     text-align center
+
+  .hobbyAnimate
+    transform: translateY(-4rem);
+  .bottom-leave
+    transform: translateX(100%);
