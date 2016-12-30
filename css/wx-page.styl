@@ -1,0 +1,61 @@
+@import 'comm'
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+  border: none
+  user-select: none
+
+#wx-page
+  width 20rem
+  height 100%
+  overflow hidden;
+  .header
+    background rgba(111, 111, 111, 0.06)
+    border-bottom: solid 1px #c5c5c5;
+    transform translateZ(0)
+    overflow hidden
+    transition all 1s
+  .header-leave
+    opacity 0
+  .banner
+    width 100%;
+  .page-layer
+    font-size 2rem
+    width: 30%
+    height auto
+    text-align center
+    color: #8e6767
+    padding 1rem 0 0 1rem
+    font-family cursive
+    transition all .5s
+  .page-leave
+     transform translateX(-100%)
+  .move
+    font-size 6rem
+    text-align center
+    color: #663399
+    font-family cursive
+    transition all .8s
+    transform translateY(-1rem)
+  .move-leave
+    transform translateY(-13rem)
+
+  .content
+    width: 20rem;
+    min-height 11.6rem
+    text-indent: 2em;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    padding: 0.55rem;
+    text-align: justify;
+    font-family:Arial;
+    transition all .8s
+
+    .move-reset
+      color blue
+      cursor pointer
+      font-weight 600
+  .content-leave
+    transform translateX(100%)
