@@ -19,8 +19,12 @@
 
 <script type="text/javascript">
 
-    require(['./js/zepto.js', './js/zoom.js', './js/page-slider.js','./js/ImgLoader.js','./js/page-move.js'], function () {
-       var pageZoom= zoom($);
+    require(['http://res.wx.qq.com/open/js/jweixin-1.0.0.js','./js/zepto.js', './js/zoom.js', './js/page-slider.js','./js/ImgLoader.js','./js/page-move.js'], function () {
+       require("./js/wxinit.js",function(){
+
+       });
+
+        var pageZoom= zoom($);
         pageZoom.calc();
         $(window).on('resize',pageZoom.calc);
         var ps = pageSlider($);
@@ -36,7 +40,6 @@
         });
 
         ps.preLoad(['./res/loading-1.png','./pay.html',"./page_1.html","./move.html", "./page_2.html", "./page_3.html"]);
-
 
     });
 </script>
