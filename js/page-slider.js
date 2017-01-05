@@ -569,6 +569,11 @@ var pageSlider = function ($) {
                 _loading();
             }
 
+            if(options.dropDown==false){
+                document.body.addEventListener("touchmove", function (e) {
+                    e.preventDefault();
+                });
+            }
 
         },
         transToPage: _transToPage,
