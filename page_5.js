@@ -4,7 +4,7 @@
 
 function ready() {
 
-    require(['zepto','boneAnimate'], function ($,QR) {
+    require(['./js/zepto.js','./js/boneAnimate.js'], function () {
 
 
         /*================Events===================*/
